@@ -1,0 +1,50 @@
+ {
+     "mysql":{
+        "User":"root",
+        "Password":"wzc233440",
+        "Host":"14.103.149.192",
+        "Port":3306,
+        "Database":"commerce"
+    },
+    "redis":{
+    "addr":"14.103.149.192:6379",
+    "password":"wzc233440",
+    "db":1
+    },
+    "elasticsearch":{
+        "host":"14.103.149.192:5601"
+    },
+    "group":{
+        "Host":"127.0.0.1",
+        "Port":8008
+    },
+    "consul":{
+        "Name":"service",
+        "Host":"127.0.0.1",
+        "Port":8500
+    },
+    "rabbitmq":{
+        "address":"amqp://wzc:wzc233440@14.103.149.192:5672/ZhuanGao5"
+    },
+    "ALiYun":{
+        "accessKeyId":"LTAI5tNcoXq9FuK15s8EE7Gx",
+        "accessKeySecret":"XvRPosrafOHKd6yW2S13eq7FzBVbyb",
+        "address":"cn-shanghai",
+        "bucket":"yooz1"
+    },
+    "ALiPay":{
+        "privateKey":"MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDTOK4485xqxrSWOBdNH3qPSl75KhMQ2LPwRUSyTxoTvOuROZxVfVYwAoEGNR5e6jhmJAm10BRmHInNRfDv/elRVelsK3DQCAxZiTWrLSBZNW7ByJvLEgRSUNgJQRJdzV/jpxN8jMG+iJWYDREQNxrdUAqREJHLtg3t00PAEree/wa/Q2xJdRgMSOP0FshPLwZEF85+puW79voUY2Mm7kAQa0N/7KslfhVl7lKEcko862Iex20AB4w6KlmKQPAZU93vzmVklLCI0s1+HTemzHslGusNLRC/MOHD5YiS9U4yzmkBt3ZxmxnGUPlic/zGBpaGdaoWcMoY6TQpd4JcYBsDAgMBAAECggEAJPXqJrUaTeTvfMnb6fb0L1bIP7mJFI2XDxhP6RPGcGXCour93EfOaSBHC5sH8Xvy2oy71kDPEP81beIrQxOfXEg4TGFdoEmIP7Ku3YFMA9BBzU8ZU/OXJgBXjWcBm8BwYxm9YzIORRUJeE3xCnFaFhgHgVLw8ECvN0qctGOSFhQg1JAgcptTbChddBPzJjtJNbq/1JyOUPFLQWSDdqj8rQ9YqAqC5q9/NY8ulpsu5l/dV1vXpkfQBQoym7EI0N/61d0uQQj0xz4Urg7waGoNSAck720ewSISTzOI/b79dLx8FIypcg4sbEYqrc2RCEBviqjeb41lLRzheYEGqzWHoQKBgQDz7jSt5BbwTVEglkXumO/5Tv8DpYbSevDVcfd7NZqRBdm+sBoSw69MxP/f+9pSUgyfKQvoR+AH4UiYA6eblE4Lo4RZ5TO2wCoRY1rH5xwtunXkQH0Uk++hsVROsFSA4XlkRoVDqRu74UB9cjp5PHRrFHwmnEfKR16W3u43AceStQKBgQDdrCidp3LqPD/JKRotJrMkggAc6/UPeGTJw7uJCzYkl9Pp52oO2IMzTxYt1AF6VpV1j6U3s8qDQbSr3/z3+HWfF7IoHF8mPyzMntSvsj1vY/AwWitWe2utKKum+K8EaryrDx0rlEUusanpO34G2GILxErsYsT53og8LXXqBTpx1wKBgQC7Yq0zPDnm5e5Bk08riG8o3OeIPJtCi9EAlykfjEEt0QnBs/SDn7HFzrwlq4q+nGs3xUdxa+2NACJNLNmP6bC+viGJEUrVw+9NJj7xu/dopYm1C1lK+o4mb1wtisWPsCYZwxbSsFEu1k49UAfdZHSmYbkxy/JWUNc4HQ9wUDyo1QKBgFy+1w9/K9lM8/MaO1WAx5sSuTFgl9utJ54zQpeIFVMiIwvOQtWLSPmCsWjjNusUptvVCe9QTf600v7GbHTjg3LY2zVlCXpbHEdQfPQ1wvaD/c59K3y3jsmYJplpmvBiKCX54N6G3ps2wjxPI9+BUSRTMHXOrVNOA/oJmzgaj+VpAoGAZfbvUAkmK1HAydYotkEw03jZpubiK8W5BqiW/DkXIr5/NVKcZQxpMR7w9AhYpq5Gb7OUcnKNfRV/c1WX0wgf40UtpRM063Zs/bVNPVnnCghEvzyOQS0RrrlRkuoDnYmUmvXiBksms1rIp51sO/NnF/KFnnWl9vyeU3yFaQotAds=",
+        "appId":"9021000142691060",
+        "notifyUrl":"",
+        "returnUrl":"https://music.163.com/song?id=5275429&uct2=U2FsdGVkX1/v7laXW8FY28mZr60v5vVZaRJJ1IrD8cI="
+    },
+    "tenXunYun":{
+        "SecretID": "AKIDE73GHEwvxlw8Bpha4a8NA0Vza45CxAlYe9LG",
+        "SecretKey": "er93u6Vl97jMUf63wGC05mBNwD44K74sZahqC17G"
+    },
+    "qqEmail":{
+        "qq": "2942278712@qq.com",
+        "password": "ciwrvpvmlpaidgee"
+    }
+   
+ }

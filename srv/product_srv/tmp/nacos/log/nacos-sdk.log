@@ -1,0 +1,25 @@
+2025-05-21T14:55:24.438+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<./tmp/nacos/log>   cacheDir:<./tmp/nacos/cache>
+2025-05-21T14:55:24.942+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2025-05-21T14:55:25.001+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:55:25.013+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2025-05-21T14:55:54.522+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:55:54.532+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2025-05-21T14:56:13.131+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<./tmp/nacos/log>   cacheDir:<./tmp/nacos/cache>
+2025-05-21T14:56:29.070+0800	[34mINFO[0m	clients/client_factory.go:47	logDir:<./tmp/nacos/log>   cacheDir:<./tmp/nacos/cache>
+2025-05-21T14:56:29.573+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 Long-Pulling-Timeout-No-Hangup:true accessKey: secretKey:] 
+
+2025-05-21T14:56:29.594+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:56:29.605+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2025-05-21T14:56:59.133+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:56:59.143+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2025-05-21T14:57:28.656+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:57:28.667+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+
+2025-05-21T14:57:58.190+0800	[34mINFO[0m	config_client/config_client.go:433	[client.ListenConfig] no change
+2025-05-21T14:57:58.201+0800	[34mINFO[0m	config_client/config_proxy.go:180	[client.ListenConfig] request params:map[Listening-Configs:2209adevbf5a64c939cf3313eef9cfaaffa942c9544c7bc6-d899-40cc-81ec-ab7733bdbc6f tenant:544c7bc6-d899-40cc-81ec-ab7733bdbc6f] header:map[Content-Type:application/x-www-form-urlencoded;charset=utf-8 Long-Pulling-Timeout:30000 accessKey: secretKey:] 
+

@@ -1,0 +1,34 @@
+package dao_mysql
+
+import (
+	"errors"
+	"fmt"
+	"models/model_product/model_mysql"
+	"product_srv/proto_product/product"
+)
+
+// todo:用户创建砍价表
+func CreateBargainUser(in *product.CreateBargainUserRequest) (result *model_mysql.BargainUser, err error) {
+	s := model_mysql.Bargain{}
+	bar, err := s.FindBargainProductById(int(in.BargainId))
+	if err != nil {
+		return nil, errors.New("查询失败")
+	}
+	if bar.ID == 0 {
+		return nil, errors.New("砍价商品不存在")
+	}
+	fmt.Println(1)
+	result = &model_mysql.BargainUser{
+		Uid:             uint32(in.Uid),
+		BargainId:       uint32(in.BargainId),
+		BargainPriceMin: bar.MinPrice,
+		BargainPrice:    bar.Price,
+		Price:           bar.Price,
+	}
+	err = result.CreateBargainUser()
+	if err != nil {
+		return nil, errors.New("添加砍价失败")
+	}
+	fmt.Println(result.Uid)
+	return result, nil
+}

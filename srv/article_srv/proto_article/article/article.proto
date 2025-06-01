@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package article;
+option go_package=".;article";
+
+// TODO 文章分类添加
+message CateAddReq {
+  string title = 1;
+  string intr = 2;
+  string img = 3;
+  int64 Pid = 4;
+}
+
+message CateAddResp {
+  string greet = 1;
+}
+
+// TODO 文章发表
+message PostArticleReq{
+  string username = 1;
+  int64 cId = 2;
+  string imageInput = 3;
+  string content = 4;
+  string title = 5;
+}
+message PostArticleResp{
+  string greet = 1;
+}
+
+// TODO 文章修改
+message UpdateArticleReq{
+  string username = 1;
+  int64 cId = 2;
+  string imageInput = 3;
+  string content = 4;
+  string title = 5;
+  int64 ArticleId = 6;
+}
+message UpdateArticleResp{
+  string greet = 1;
+}
+
+// TODO 文章和内容删除
+message DeleteArticleReq{
+  int64 ArticleId = 1;
+}
+message DeleteArticleResp{
+  string greet = 1;
+}
+
+// TODO 文章分类列表查询
+message CateListReq{
+
+}
+message CateListResp{
+  repeated CateList list = 1;
+}
+message CateList{
+  string title = 1;
+  string intr = 2;
+  string img = 3;
+  int64 Pid = 4;
+  int64 id = 5;
+}
+
+// TODO 文章评论
+message ArtCommentReq{
+  string username = 1;
+  int64 ArticleId = 2;
+  string content = 3;
+}
+message ArtCommentResp{
+  string greet = 1;
+}
+
+// TODO 评论回复
+message ReplyCommentReq{
+  string username = 1;
+  int64 ArticleId = 2;
+  string content = 3;
+  int64 pid = 4;
+  int64 CommentId = 5;
+}
+message ReplyCommentResp{
+  string greet = 1;
+}
+
+//TODO 评论删除
+message DelCommentReq{
+  int64 CommentId = 1;
+}
+message DelCommentResp{
+  string greet = 1;
+}
+
+service Article {
+  rpc CateAdd(CateAddReq) returns (CateAddResp); // TODO 文章分类添加
+  rpc PostArticle(PostArticleReq) returns (PostArticleResp); // TODO 文章发表
+  rpc UpdateArticle(UpdateArticleReq) returns (UpdateArticleResp); // TODO 文章和内容修改
+  rpc DeleteArticle(DeleteArticleReq) returns (DeleteArticleResp); // TODO 文章和内容删除
+  rpc CateList(CateListReq) returns (CateListResp); // TODO 文章分类列表查询
+  rpc ArtComment(ArtCommentReq) returns (ArtCommentResp); // TODO 文章评论
+  rpc ReplyComment(ReplyCommentReq) returns (ReplyCommentResp); // TODO 评论回复
+  rpc DelComment(DelCommentReq) returns (DelCommentResp); // TODO 评论删除
+}

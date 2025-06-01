@@ -1,0 +1,380 @@
+syntax = "proto3";
+
+package product;
+option go_package=".;product";
+
+//todo:添加砍价商品
+
+
+//todo 商品关键字查询
+message ProductKeywordRequest{
+  string Keyword = 1;
+}
+message ProductKeywordResponse{
+  repeated NewProductList list=1;
+}
+
+//TODO: 商品推荐
+message ProductRecommendRequest {
+
+}
+message ProductRecommendResponse {
+  repeated NewProductList list=1;
+}
+//todo:商品详情
+message ProductInfoRequest{
+  string StoreName=1;
+}
+
+message ProductInfoResponse{
+  repeated ProductList list=1;
+}
+
+message ProductList{
+  int64  Id=1;
+  int64  MerId=2;
+  string StoreName=3;
+  string StoreInfo=4;
+  string CateId=5;
+  float  Price=6;
+  int64  Sales=7;
+  int64  Stock=8;
+  int64  IsShow=9;
+  float  Cost=10;
+  int64  IsGood=11;
+  int64  Browse=12;
+  int64  ProductSortId=13;
+  int64  Pid=14;
+  string CateName=15;
+  int64  Sort=16;
+}
+
+//todo 分类浏览
+message ProductCategoryRequest{
+  string cateId = 1;
+}
+message ProductCategoryResponse{
+  repeated ProductList list=1;
+}
+//todo 商品筛选
+message ProductFilterRequest{
+  double min_price=1;
+  double max_price=2;
+  string cate_id=3;
+  int64 sales=4;
+  int64  is_show=5;
+  int64  is_hot=6;
+  int64  is_benefit=7;
+  int64  is_best=8;
+  int64 is_new=9;
+  int64 is_seckill=10;
+  int64 is_bargain=11;
+  string name=12;
+}
+
+
+message ProductFilterResponse{
+  repeated NewProductList list=1;
+}
+
+message NewProductList {
+  int64 MerId = 1;
+  string Image = 2;
+  string StoreName =3;
+  string StoreInfo = 4;
+  string CateId = 5;
+  float Price =6;
+  float VipPrice = 7;
+  int64 Sales = 8;
+  int64 Stock = 9;
+  int64 IsPostage = 10;
+  int64 Browse = 11;
+  string Keyword=12;
+}
+
+//todo:添加购物车
+message AddToCartRequest{
+  int64 UserId=1;
+  int64 ProductId=2;
+  int64 Num =3;
+}
+message AddToCartResponse{
+  bool Success=1;
+}
+
+
+// 商家发布商品
+message AddProductRequest {
+  int64 MerId = 1;
+  string Image = 2;
+  string StoreName = 3;
+  string StoreInfo = 4;
+  string Keyword = 5;
+  string CateId = 6;
+  float Price = 7;
+  float VipPrice = 8;
+  float OtPrice = 9;
+  float Cost = 10;
+  int64 Stock = 11;
+}
+
+message AddProductResponse {
+  int64 ProductId = 1;
+}
+
+
+message CreateBargainProductRequest {
+  int64 ProductId = 1;
+  string Title = 2;
+  int64 Stock = 3;
+  string StartTime = 4;
+  string StopTime = 5;
+  float MinPrice = 6;
+  int64 BargainMaxPrice = 7;
+  int64 BargainMinPrice = 8;
+}
+
+message CreateBargainProductResponse {
+  int64 result = 1;
+}
+
+
+//todo:用户发起砍价
+
+
+// todo:商家删除商品
+message MerchantDeleteProRequest{
+  int64 MerId = 1;
+  int64 ProductId = 2;
+
+}
+
+message MerchantDeleteProResponse{
+  string message = 1;
+}
+
+// todo:创建砍价用户
+
+message CreateBargainUserRequest {
+  int64 Uid = 1;
+  int64 BargainId = 2;
+}
+
+message CreateBargainUserResponse {
+  int64 result = 1;
+}
+
+//todo:用户帮砍
+
+// todo: 计算购物车中商品的总价
+message CartTotalPriceRequest{
+  int64 UserId =1;
+}
+message CartTotalPriceResponse{
+  float TotalPrice = 1;
+}
+
+
+//todo 添加拼团商品
+message AddGroupProductRequest{
+  int64 MerId = 1;
+  int64 ProductId = 2;
+  string Title = 3;
+  string Attr = 4;
+  int64 People = 5;
+  string Info = 6;
+  float Price = 7;
+  int64 Sort = 8;
+  int64 Sales = 9;
+  int64 Stock = 10;
+  string StartTime = 11;
+  string StopTime = 12;
+  int64 Cost = 13;
+
+}
+
+
+message AddGroupProductResponse{
+  int64 GProductId = 1;
+}
+
+//todo 帮砍
+
+message CreateBargainUserHelpRequest{
+  uint32 Uid = 1;
+  uint32 BargainId = 2;
+  uint32 BargainUserId = 3;
+}
+
+message CreateBargainUserHelpResponse{
+  int64 result = 1;
+}
+
+//todo 商家删除拼团商品
+message RemoveGroupProductRequest{
+  int64 MerId = 1;
+  int64 ProductId = 2;
+}
+
+message RemoveGroupProductResponse{
+  string Message = 1;
+}
+
+// todo:用户发起拼团
+message CreateUserGroupRequest{
+  int64 Uid = 1;
+  int64 Cid = 2;
+  int64 Num = 3;
+}
+
+message CreateUserGroupResponse{
+  int64 UGroupId = 1;
+  string InviteCode = 2;
+  int64 NowPeopleNum = 3;
+  string Status = 4;
+  string Url = 5;
+}
+
+// todo:商品列表展示
+message ProductListRequest{
+
+}
+
+message ProductListResponse{
+  repeated ProductItem List = 1;
+}
+
+message ProductItem{
+  string StoreName = 1;
+  string StoreInfo = 2;
+  string CateId = 3;
+  float Price = 4;
+  int64 Sales = 5;
+  int64 Browse=6;
+}
+
+// TODO:添加优惠卷
+message AddCouponRequest{
+  string Title = 1;
+  int64 Integral = 2;
+  float CouponPrice = 3;
+  float UseMinPrice = 4;
+}
+
+message AddCouponResponse{
+  int64 CouponId = 1;
+}
+
+// TODO:前台商家添加优惠卷
+message MerAddCouponStoreRequest{
+  int64 MerId = 1;
+  int64 Cid = 2;
+  string StartTime = 3;
+  string StopTime = 4;
+  int64 Num = 5;
+  float FullReduction = 6;
+}
+
+message MerAddCouponStoreResponse{
+  int64 result = 1;
+}
+
+// TODO: 商家删除优惠卷
+message MerDeleteCouponStoreRequest{
+  int64 MerId = 1;
+  int64 Cid = 2;
+}
+
+message MerDeleteCouponStoreResponse{
+  string Message = 1;
+}
+
+message AddSpikeProductRequest{
+  int64 ProductId = 1;
+  float SpikePrice = 2;
+  int64 SpikeStock = 3;
+  string StartTime = 4;
+  string EndTime = 5;
+}
+
+message AddSpikeProductResponse{
+  int64 ProductId = 1;
+}
+
+
+//todo:秒杀中
+message FlashSaleRequest {
+  int64  SpikeProductsId = 1;//todo: 秒杀商品Id
+  int64  UserId = 2;//todo: 用户Id
+}
+
+message FlashSaleResponse {
+  string Success = 1;
+}
+
+
+// todo:用户加入拼团
+message UserJoinGroupRequest{
+  int64 Uid = 1;
+  int64 Cid = 2;
+  int64 Num = 3;
+  string InvitationCode = 4;
+}
+
+message UserJoinGroupResponse{
+  int64 UGroupId = 1;
+  string ProductName = 2;
+  string Status = 3;
+  string Url = 4;
+}
+
+service Product {
+  rpc ProductInfo(ProductInfoRequest) returns(ProductInfoResponse);//todo:商品详情
+
+  rpc ProductFilter(ProductFilterRequest) returns(ProductFilterResponse);//todo:商品筛选
+
+  rpc ProductCategory(ProductCategoryRequest) returns(ProductCategoryResponse);//todo:商品分类浏览
+
+  rpc ProductKeyword(ProductKeywordRequest) returns(ProductKeywordResponse);//todo:商品关键字查询
+
+  rpc ProductRecommend(ProductRecommendRequest) returns(ProductRecommendResponse);//todo:商品推荐
+
+  rpc AddToCart(AddToCartRequest) returns(AddToCartResponse);//todo:添加购物车
+
+  rpc CreateBargainProduct(CreateBargainProductRequest) returns(CreateBargainProductResponse); //todo: 创建砍价商品
+
+  rpc AddProduct(AddProductRequest) returns(AddProductResponse);//todo: 商户添加商品
+
+  rpc MerchantDeletePro(MerchantDeleteProRequest) returns(MerchantDeleteProResponse);//todo: 商家删除商品
+
+  rpc CreateBargainUser(CreateBargainUserRequest) returns(CreateBargainUserResponse); //todo: 创建砍价用户
+
+  rpc AddGroupProduct(AddGroupProductRequest) returns(AddGroupProductResponse); //todo: 商家添加拼团商品
+
+  rpc RemoveGroupProduct(RemoveGroupProductRequest) returns(RemoveGroupProductResponse); //todo: 商家删除拼团商品
+
+  rpc CreateUserGroup(CreateUserGroupRequest) returns(CreateUserGroupResponse); //todo: 用户发起拼团
+
+  rpc CreateBargainUserHelp(CreateBargainUserHelpRequest) returns(CreateBargainUserHelpResponse);//todo: 用户帮砍
+
+  rpc CartTotalPrice(CartTotalPriceRequest) returns(CartTotalPriceResponse); // todo 购物车计算总价
+
+  rpc ProductList(ProductListRequest) returns(ProductListResponse); // todo 商品列表展示
+
+  rpc AddCoupon(AddCouponRequest) returns(AddCouponResponse); // todo 添加优惠卷
+
+  rpc MerAddCouponStore(MerAddCouponStoreRequest) returns(MerAddCouponStoreResponse); // todo 前台商家添加优惠卷
+
+  rpc MerDeleteCouponStore(MerDeleteCouponStoreRequest) returns(MerDeleteCouponStoreResponse); // todo 前台商家删除优惠卷
+
+  rpc AddSpikeProduct(AddSpikeProductRequest) returns(AddSpikeProductResponse); // todo 秒杀商品预热
+
+  rpc FlashSale(FlashSaleRequest) returns(FlashSaleResponse); // todo 秒杀中
+
+  rpc UserJoinGroup(UserJoinGroupRequest) returns(UserJoinGroupResponse); // todo 用户加入拼团
+
+}
+
+
+
+

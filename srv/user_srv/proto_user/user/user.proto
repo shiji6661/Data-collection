@@ -1,0 +1,407 @@
+syntax = "proto3";
+
+package user;
+option go_package=".;user";
+
+//todo:用户账号密码注册
+message UserRegisterRequest {
+  string UserName = 1;
+  string UserPassword = 2;
+  string UserPhone = 3;
+  int64  UserInviteId = 4;
+  string InviteCode = 5;
+}
+
+message UserRegisterResponse {
+  int64 UserId = 1;
+}
+
+//todo:短信发送
+message SendSmsRequest {
+  string Mobile = 1;
+  string source= 2;
+}
+
+message SendSmsResponse {
+  string greet = 1;
+}
+//todo:用户登录
+message UserLoginRequest{
+  // todo 登录方式
+  LoginType Login_Type = 1;
+  string UserName = 2;
+  string UserPassword = 3;
+  string UserPhone = 4;
+  string MobileCode  = 5;
+  string UserEmail = 6;
+  string EmailCode = 7;
+}
+message UserLoginResponse{
+  int64 greet = 1;
+}
+
+// todo 定义登录方式的枚举
+enum LoginType {
+  // 未指定登录方式
+  LOGIN_TYPE_UNSPECIFIED = 0;
+  // 使用用户名和密码登录
+  LOGIN_TYPE_USERNAME = 1;
+  // 使用手机号和验证码登录
+  LOGIN_TYPE_PHONE = 2;
+  // 使用邮箱和验证码登录
+  LOGIN_TYPE_EMAIL = 3;
+}
+
+//todo:邮件发送
+message SendEmailRequest {
+  string UserEmail = 1;
+}
+message SendEmailResponse{
+  string greet = 1;
+}
+
+//todo:个人信息
+message UserInfoRequest {
+  int64 Id = 1;
+}
+message UserInfoResponse{
+  string Nickname = 1;
+  string Headimgurl = 2;
+  int64 Sex = 3;
+  string City = 4;
+  string Language = 5;
+  string Province = 6;
+  string Country = 7;
+  int64 Stair = 8;
+  int64 Second = 9;
+  string UserPhone = 10;
+  string UserEmail = 11;
+  int64 UserState = 12;
+}
+
+message SendMessageRequest {
+  int64 SendId = 1;
+  int64 ReceiverId = 2;
+  string Context = 3;
+}
+message SendMessageResponse{
+  string result = 1;
+}
+
+message FindMessageRequest {
+  int64 ReceiverId = 1;
+}
+message FindMessageResponse{
+  repeated FindMessageInfo list = 1;
+}
+
+message FindMessageInfo {
+  int64 SendId = 1;
+  string Context = 2;
+}
+
+//todo:邀请码生成
+message InvitationCodeGenerationRequest {
+  int64 UserId = 1;
+}
+
+message InvitationCodeGenerationResponse{
+  string InvitationCode = 1;
+}
+
+//todo:个人信息修改
+message UserModifyRequest {
+  int64 Id = 1;
+  string UserName =2;//用户名
+  string UserPassword =3;//用户密码
+  string Password =4;//确认密码
+  string UserPhone =5;//用户手机号码
+  string UserEmail =6;//用户邮箱
+  string UserProvince =7;//用户所在省份
+  string UserCity =8;//用户所在城市
+  string UserCounty =9;//用户所在国家
+  string UserDetailedAddress =10; //用户详细地址
+}
+
+message UserModifyResponse{
+  bool Success = 1;
+}
+
+//todo:用户实名认证
+message RealNameRequest {
+  int64 Uid = 1;
+  string Name = 2;
+  string Card = 3;
+}
+
+message RealNameResponse{
+  int64 id = 1;
+}
+
+//todo:用户查看所有订单
+message UserViewOrderRequest {
+  int64 Uid = 1;
+}
+
+message UserViewOrderResponse{
+  repeated OrderList list = 1;
+}
+
+message OrderList {
+  string OrderId = 1;//订单号
+  string Image = 2;//商品图片
+  string StoreName = 3;//商品名称
+  int64  TotalNum = 4;//订单商品总数
+  int64 Status = 5;//订单状态
+  float TotalPrice = 6;//订单商品总价
+  string CreatedAt = 7;//下单时间
+  string PayTime = 8;//支付时间
+  string RealName = 9;//用户姓名
+}
+
+//todo:用户查看订单详情
+message UserViewOrderInfoRequest {
+  int64 Uid = 1;//用户id
+  int64 OrderId = 2;//订单id
+}
+
+message UserViewOrderInfoResponse{
+  int64 CartId = 1;//购物车id
+  int64 ProductId = 2;//商品id
+  string CartInfo = 3;//详细信息
+}
+
+//todo:展示会员
+message UserLevelInfoRequest {
+  int64 Uid = 1;//用户id
+}
+
+message UserLevelInfoResponse{
+  repeated levelInfo info = 1;
+}
+
+message levelInfo {
+  string Name = 1;//会员名称
+  int64 Score = 2;//会员分
+  string Img = 3;//会员图标
+  string Explain = 4;//说明
+}
+
+//todo:展示会员权益
+message UserLevelRightsRequest {
+  int64 Uid = 1;//用户id
+  int64 ULid = 2;//会员等级id
+}
+
+message UserLevelRightsResponse{
+  repeated rightsInfo list = 1;
+}
+
+message rightsInfo {
+  string RightsName = 1;
+  int64 UserLevelId = 2;
+  string Img = 3;
+  string Explain = 4;
+}
+
+//todo:用户签到
+message UserSignInRequest {
+  int64 Uid = 1;//用户id
+}
+
+message UserSignInResponse{
+  bool Success =1;
+  string Message=2;
+  string Continuous=3;
+}
+
+//todo:用户补签
+message UserReSigningRequest {
+  int64 Uid = 1;     //用户id
+  string SignDate=2; //补签日期
+}
+
+message UserReSigningResponse{
+  bool Success =1;
+  string Message=2;
+  int64 Points=3;
+}
+
+// todo:用户申请发票
+message UserApplyInvoiceRequest{
+  int64 Userid = 1;
+  int64 OrderId = 2;
+  int64 TitleType = 3;
+  string  Title = 4;
+  string TaxId = 5;
+}
+
+message UserApplyInvoiceResponse{
+  int64 InvoiceId = 1;
+  string PdfUrl = 2;
+}
+
+// todo:用户使用权益展示
+message UserUseRightsRequest{
+  int64 Uid = 1;
+}
+
+message UserUseRightsResponse{
+  repeated UseRights list = 1;
+}
+
+message UseRights {
+  string UserName = 1;
+  string RightsName = 2;
+  string Img = 3;
+  string Explain = 4;
+  string CreatedAt = 5;
+}
+
+// todo:用户发票展示
+message UserInvoicesListRequest{
+  int64 Userid = 1;
+}
+
+message UserInvoicesListResponse{
+  repeated InvoiceItem List = 1;
+}
+
+message InvoiceItem{
+  string InvoiceNo = 1;
+  int64 OrderId = 2;
+  int64 Type = 3;
+  int64 Status = 4;
+  int64 TitleType = 5;
+  string  Title = 6;
+  string TaxId = 7;
+  float Amount = 8;
+  float TaxAmount =9;
+  string IssueData = 10;
+  string Expire = 11;
+}
+
+// todo:修改发票信息
+message UpdateInvoiceRequest{
+  int64 Userid = 1;
+  int64 InvoiceId = 2;
+  int64 Type = 3;
+  int64 TitleType = 4;
+  string Title = 5;
+  string TaxId = 6;
+}
+
+message UpdateInvoiceResponse{
+  int64 Type = 1;
+  int64 TitleType = 2;
+  string  Title = 3;
+  string TaxId = 4;
+}
+
+// todo：用户领取优惠券
+message UserReceiveCouponRequest{
+  int64 Userid = 1;
+  int64 CSId = 2;
+}
+
+message UserReceiveCouponResponse{
+  int64 CUId = 1;
+}
+
+// todo：会员分添加记录展示
+message ShowMemberPointsRequest{
+  int64 Userid = 1;
+}
+
+message ShowMemberPointsResponse{
+  repeated PointsList list = 1;
+}
+
+message PointsList {
+  int64 Points = 1;
+  int64 Type = 2;
+  string OrderId = 3;
+  float Amount = 4;
+  int64 InvitedUid = 5;
+  string CreatedAt = 6;
+}
+
+// todo：佣金排行榜
+message CommissionListRequest{
+  int64 page = 1;
+  int64 size = 2;
+}
+message CommissionListResponse{
+  repeated CommissionList list = 1;
+}
+message CommissionList {
+  int64 UserId = 1;
+  string UserName = 2;
+  float SubUserPrice = 3;
+}
+
+// todo：邀请用户排行榜
+message InviteUserListRequest{
+}
+message InviteUserListResponse{
+  repeated InviteUserList list = 1;
+}
+message InviteUserList {
+  int64 UserId = 1;
+  string UserName = 2;
+  int64 InviteNum = 3;
+}
+service User {
+  rpc UserRegister(UserRegisterRequest) returns(UserRegisterResponse);//todo:用户账号密码注册
+
+  rpc SendSms(SendSmsRequest) returns(SendSmsResponse);//todo:短信发送
+
+  rpc UserLogin(UserLoginRequest) returns(UserLoginResponse);//todo:用户登录
+
+  rpc SendEmail(SendEmailRequest) returns(SendEmailResponse);//todo:邮件发送
+
+  rpc UserInfo(UserInfoRequest) returns(UserInfoResponse);// todo 个人信息
+
+  rpc InvitationCodeGeneration(InvitationCodeGenerationRequest) returns(InvitationCodeGenerationResponse);// todo 用户邀请码生成
+
+  rpc UserModify(UserModifyRequest) returns(UserModifyResponse);//todo 个人信息修改
+
+  rpc RealName(RealNameRequest) returns(RealNameResponse);//todo 用户实名认证
+
+  rpc UserViewOrder(UserViewOrderRequest) returns(UserViewOrderResponse);//todo 用户查看所有订单
+
+  rpc UserViewOrderInfo(UserViewOrderInfoRequest) returns(UserViewOrderInfoResponse);//todo 用户查看订单详情
+
+  rpc UserLevelInfo(UserLevelInfoRequest) returns(UserLevelInfoResponse);//todo 展示会员
+
+  rpc UserLevelRights(UserLevelRightsRequest) returns(UserLevelRightsResponse);//todo 展示会员权益
+
+  rpc UserSignIn(UserSignInRequest) returns(UserSignInResponse);//todo:用户签到
+
+  rpc UserReSigning(UserReSigningRequest) returns(UserReSigningResponse);//todo:用户补签
+
+  rpc UserApplyInvoice(UserApplyInvoiceRequest) returns(UserApplyInvoiceResponse);//todo 用户申请发票
+
+  rpc FindMessage(FindMessageRequest) returns(FindMessageResponse);//todo 接收消息
+
+  rpc SendMessage(SendMessageRequest) returns(SendMessageResponse);//todo 站内信发送
+  
+  rpc UserUseRights(UserUseRightsRequest) returns(UserUseRightsResponse);//todo 用户使用权益展示
+
+  rpc UserInvoicesList(UserInvoicesListRequest) returns(UserInvoicesListResponse);//todo 用户查看自己的发票
+
+  rpc UpdateInvoice(UpdateInvoiceRequest) returns(UpdateInvoiceResponse);//todo: 修改发票
+
+  rpc UserReceiveCoupon(UserReceiveCouponRequest) returns(UserReceiveCouponResponse);//todo 用户领取优惠券
+
+  rpc ShowMemberPoints(ShowMemberPointsRequest) returns(ShowMemberPointsResponse);//todo 会员分添加记录展示
+
+  rpc CommissionList(CommissionListRequest) returns(CommissionListResponse);//todo 佣金排行榜
+
+  rpc InviteUserList(InviteUserListRequest) returns(InviteUserListResponse);//todo 邀请用户排行榜
+
+}
+
+
+
+

@@ -1,0 +1,114 @@
+syntax = "proto3";
+
+package order;
+option go_package=".;order";
+
+
+//todo 商品下单进队列
+message CreateOrderRequest {
+  int64 UserId = 1;
+  int64 ProductId=2;
+  int64 Num=3;
+  int64 Pay=4;
+}
+
+message CreateOrderResponse {
+  string OrderSn = 1;
+  string Url = 2;
+}
+
+// todo: 消费队列创建订单
+message CreateOrderMessageRequest{
+
+}
+
+message CreateOrderMessageResponse{
+  string Ping = 1;
+}
+
+//todo 商品下单(购物车)
+message CreateOrderCartRequest {
+  int64 UserId = 1;
+  int64 ProductId=2;
+  int64 Pay=3;
+}
+
+message CreateOrderCartResponse {
+  int64 OrderId = 1;
+  string Url=2;
+}
+
+//todo 商品下单(砍价商品)
+message CreateOrderBargainRequest {
+  int64 BargainId = 1;
+  int64 UserId = 2;
+}
+
+message CreateOrderBargainResponse {
+  int64 OrderId = 1;
+  string Url=2;
+}
+
+//todo 订单支付(异步)
+message OrderPayRequest {
+  int64 UserId=1;
+  int64 OrderId = 2;
+  int64 Pay=3;
+}
+
+message OrderPayResponse {
+  string Url = 1;
+}
+
+//todo 支付回调
+message OrderPayBakeCallRequest {
+  string OrderId=1;
+  int64 Status=2;
+}
+
+message OrderPayBakeCallResponse {
+  bool Success=1;
+}
+
+
+//TODO 根据订单号生成二维码
+message CreateOrCodeRequest {
+  int64 OrderId=1;
+  int64 UserId = 2;
+  int64 MerId = 3;
+}
+message CreateOrCodeResponse {
+  string success = 1;
+}
+
+// todo 商家统计销售额
+message MerchantCountAmountRequest{
+  int64 MerId = 1;
+}
+message MerchantCountAmountResponse{
+  float Amount = 1;
+}
+
+
+//todo:生成订单
+message OrderCreateRequest {
+  int64  UserId = 1;//todo: 用户Id
+}
+
+message OrderCreateResponse {
+  string Success = 1;
+}
+
+service Order {
+
+  rpc CreateOrder(CreateOrderRequest) returns(CreateOrderResponse);//TODO 创建订单(不经过购物车)
+  rpc CreateOrderMessage(CreateOrderMessageRequest) returns(CreateOrderMessageResponse);//TODO 消费队列创建订单
+  rpc CreateOrderCart(CreateOrderCartRequest) returns(CreateOrderCartResponse);//TODO 创建订单(购物车)
+  rpc OrderPay(OrderPayRequest) returns(OrderPayResponse);//TODO 订单支付
+  rpc OrderPayBakeCall(OrderPayBakeCallRequest) returns(OrderPayBakeCallResponse);//TODO 支付回调
+  rpc CreateOrderBargain(CreateOrderBargainRequest) returns(CreateOrderBargainResponse);//TODO 商品下单(砍价商品)
+  rpc CreateOrCode(CreateOrCodeRequest) returns(CreateOrCodeResponse);//TODO 根据订单号生成二维码
+  rpc MerchantCountAmount(MerchantCountAmountRequest) returns(MerchantCountAmountResponse); // todo 商家统计销售额
+  rpc OrderCreate(OrderCreateRequest) returns(OrderCreateResponse); // todo
+
+}

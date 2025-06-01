@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package merchant;
+option go_package=".;merchant";
+
+// todo:商家注册
+message MerChantRegisterRequest {
+  string UserName = 1;
+  string UserPassword = 2;
+  string MerchantPhone = 3;
+  string MerchantEmail = 4;
+  string MerchantAvatar =5;
+}
+
+message MerChantRegisterResponse {
+  int64 MerId = 1;
+}
+
+// 定义商家登录类型的枚举
+enum MerchantLoginType {
+  // 默认值，未指定登录类型
+  MERCHANT_LOGIN_TYPE_UNSPECIFIED = 0;
+  // 用户名密码登录
+  MERCHANT_LOGIN_TYPE_USERNAME_PASSWORD = 1;
+  // 手机号验证码登录（这里假设使用手机号和密码也可以，可按需修改）
+  MERCHANT_LOGIN_TYPE_PHONE_PASSWORD = 2;
+  // 邮箱验证码登录（这里假设使用邮箱和密码也可以，可按需修改）
+  MERCHANT_LOGIN_TYPE_EMAIL_PASSWORD = 3;
+}
+
+message MerchantLoginRequest {
+  // 登录类型
+  MerchantLoginType login_type = 1;
+  string user_name = 2;
+  string user_password = 3;
+  string merchant_phone = 4;
+  string merchant_email = 5;
+ string Code = 6;
+}
+
+message MerchantLoginResponse {
+  string Token = 1;
+}
+
+// 短信发送
+message SendSmsRequest {
+  string Phone = 1;
+  string Source = 2;
+}
+message SendSmsResponse {
+  string message = 1;
+}
+
+// 邮件发送
+message SendEmailRequest {
+  string Email = 1;
+}
+message SendEmailResponse {
+  string message = 1;
+}
+
+
+//todo:核销二维码
+message ParseCodeRequest {
+  string filepath = 1;
+  int64 MerId = 2;
+}
+message ParseCodeResponse {
+  int64 userId = 1;
+  int64 orderId = 2;
+  int64 MerId = 3;
+}
+
+//todo:平台对商家
+
+//todo:按日统计店铺数据
+message StatisticsStoreDailyDataRequest {
+  int64 MerId=1;
+}
+message StatisticsStoreDailyDataResponse {
+  float TotalPrice=1;
+}
+
+
+
+service Merchant {
+  rpc MerChantRegister(MerChantRegisterRequest) returns(MerChantRegisterResponse);//todo:商家注册（wzc）
+
+  rpc MerchantLogin(MerchantLoginRequest) returns(MerchantLoginResponse);//todo:商家登录（wzc）
+
+  rpc SendSms(SendSmsRequest) returns(SendSmsResponse);//todo:短信发送（wzc）
+
+  rpc SendEmail(SendEmailRequest) returns(SendEmailResponse);//todo:邮件发送（wzc）
+
+  rpc ParseCode(ParseCodeRequest) returns(ParseCodeResponse);//todo:核销二维码
+
+  rpc StatisticsStoreDailyData(StatisticsStoreDailyDataRequest) returns(StatisticsStoreDailyDataResponse);//todo:按日统计店铺数据
+}
