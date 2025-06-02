@@ -28,6 +28,16 @@ go.work.sum
 *.sum
 *.log
 
+way/go.mod
+srv/user_srv/go.mod
+srv/product_srv/go.mod
+srv/order_srv/go.mod
+srv/merchant_srv/go.mod
+srv/kuteng-RabbitMQ/go.mod
+srv/article_srv/go.mod
+models/go.mod
+common/go.mod
+Api/go.mod
 
 Zap
 log
