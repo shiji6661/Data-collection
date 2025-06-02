@@ -1,1 +1,0 @@
-module kuteng-RabbitMQ

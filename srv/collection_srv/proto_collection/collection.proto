@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package collection;
+option go_package="./collection";
+//todo:数据收集
+message DataCollectionRequest {
+
+}
+
+message DataCollectionResponse {
+  bool Success = 1;
+}
+
+//todo:信息入库
+message InformationStoreRequest {
+  int64 Uid = 1;
+  int64 Tid = 2;
+  int64 Heartbeat = 3;//心率数据
+  string Database = 4;
+  string Table = 5;
+}
+
+message InformationStoreResponse {
+  bool Success = 1;
+}
+
+//todo:redis消息缓存
+message MessageCacheRequest {
+  int64 Uid = 1;
+  int64 Tid = 2;
+  int64 Heartbeat = 3;//心率数据
+}
+
+message MessageCacheResponse {
+  bool Success = 1;
+}
+
+//todo:redis缓存消息查看
+message GetMessageCacheRequest {
+  int64 Uid = 1;
+}
+
+message GetMessageCacheResponse {
+  int64 Uid = 1;
+  int64 Heartbeat = 2;//心率数据
+}
+
+service Collection {
+  rpc DataCollection(DataCollectionRequest) returns(DataCollectionResponse);//todo:数据收集
+  rpc InformationStore(InformationStoreRequest) returns(InformationStoreResponse);//todo:信息入库
+  rpc MessageCache(MessageCacheRequest) returns(MessageCacheResponse);//todo:redis消息缓存
+  rpc GetMessageCache(GetMessageCacheRequest) returns(GetMessageCacheResponse);//todo:redis缓存消息查看
+}
+
