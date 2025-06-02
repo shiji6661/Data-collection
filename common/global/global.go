@@ -43,3 +43,5 @@ const (
 	MAX_MEMBER_LEVEL       = 5    // 最高会员等级
 	POINTS_PER_LEVEL       = 2000 // 每级所需积分
 )
+
+const MANAGE_ID = 1

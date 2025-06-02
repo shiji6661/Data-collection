@@ -107,7 +107,7 @@ type InformationStoreRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=Uid,proto3" json:"Uid,omitempty"`
 	Tid           int64                  `protobuf:"varint,2,opt,name=Tid,proto3" json:"Tid,omitempty"`
-	Heartbeat     int64                  `protobuf:"varint,3,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
+	Heartbeat     string                 `protobuf:"bytes,3,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
 	Database      string                 `protobuf:"bytes,4,opt,name=Database,proto3" json:"Database,omitempty"`
 	Table         string                 `protobuf:"bytes,5,opt,name=Table,proto3" json:"Table,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -158,11 +158,11 @@ func (x *InformationStoreRequest) GetTid() int64 {
 	return 0
 }
 
-func (x *InformationStoreRequest) GetHeartbeat() int64 {
+func (x *InformationStoreRequest) GetHeartbeat() string {
 	if x != nil {
 		return x.Heartbeat
 	}
-	return 0
+	return ""
 }
 
 func (x *InformationStoreRequest) GetDatabase() string {
@@ -228,7 +228,7 @@ type MessageCacheRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=Uid,proto3" json:"Uid,omitempty"`
 	Tid           int64                  `protobuf:"varint,2,opt,name=Tid,proto3" json:"Tid,omitempty"`
-	Heartbeat     int64                  `protobuf:"varint,3,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
+	Heartbeat     string                 `protobuf:"bytes,3,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -277,11 +277,11 @@ func (x *MessageCacheRequest) GetTid() int64 {
 	return 0
 }
 
-func (x *MessageCacheRequest) GetHeartbeat() int64 {
+func (x *MessageCacheRequest) GetHeartbeat() string {
 	if x != nil {
 		return x.Heartbeat
 	}
-	return 0
+	return ""
 }
 
 type MessageCacheResponse struct {
@@ -376,7 +376,7 @@ func (x *GetMessageCacheRequest) GetUid() int64 {
 type GetMessageCacheResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Uid           int64                  `protobuf:"varint,1,opt,name=Uid,proto3" json:"Uid,omitempty"`
-	Heartbeat     int64                  `protobuf:"varint,2,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
+	List          []*GetMessageCache     `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -418,11 +418,136 @@ func (x *GetMessageCacheResponse) GetUid() int64 {
 	return 0
 }
 
-func (x *GetMessageCacheResponse) GetHeartbeat() int64 {
+func (x *GetMessageCacheResponse) GetList() []*GetMessageCache {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+type GetMessageCache struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Heartbeat     string                 `protobuf:"bytes,1,opt,name=Heartbeat,proto3" json:"Heartbeat,omitempty"` //心率数据
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetMessageCache) Reset() {
+	*x = GetMessageCache{}
+	mi := &file_collection_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetMessageCache) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetMessageCache) ProtoMessage() {}
+
+func (x *GetMessageCache) ProtoReflect() protoreflect.Message {
+	mi := &file_collection_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetMessageCache.ProtoReflect.Descriptor instead.
+func (*GetMessageCache) Descriptor() ([]byte, []int) {
+	return file_collection_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetMessageCache) GetHeartbeat() string {
 	if x != nil {
 		return x.Heartbeat
 	}
-	return 0
+	return ""
+}
+
+// todo:数据清洗
+type DataCleaningRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DataCleaningRequest) Reset() {
+	*x = DataCleaningRequest{}
+	mi := &file_collection_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DataCleaningRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DataCleaningRequest) ProtoMessage() {}
+
+func (x *DataCleaningRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_collection_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DataCleaningRequest.ProtoReflect.Descriptor instead.
+func (*DataCleaningRequest) Descriptor() ([]byte, []int) {
+	return file_collection_proto_rawDescGZIP(), []int{9}
+}
+
+type DataCleaningResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=Success,proto3" json:"Success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DataCleaningResponse) Reset() {
+	*x = DataCleaningResponse{}
+	mi := &file_collection_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DataCleaningResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DataCleaningResponse) ProtoMessage() {}
+
+func (x *DataCleaningResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_collection_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DataCleaningResponse.ProtoReflect.Descriptor instead.
+func (*DataCleaningResponse) Descriptor() ([]byte, []int) {
+	return file_collection_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DataCleaningResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
 }
 
 var File_collection_proto protoreflect.FileDescriptor
@@ -437,7 +562,7 @@ const file_collection_proto_rawDesc = "" +
 	"\x17InformationStoreRequest\x12\x10\n" +
 	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\x12\x10\n" +
 	"\x03Tid\x18\x02 \x01(\x03R\x03Tid\x12\x1c\n" +
-	"\tHeartbeat\x18\x03 \x01(\x03R\tHeartbeat\x12\x1a\n" +
+	"\tHeartbeat\x18\x03 \x01(\tR\tHeartbeat\x12\x1a\n" +
 	"\bDatabase\x18\x04 \x01(\tR\bDatabase\x12\x14\n" +
 	"\x05Table\x18\x05 \x01(\tR\x05Table\"4\n" +
 	"\x18InformationStoreResponse\x12\x18\n" +
@@ -445,20 +570,26 @@ const file_collection_proto_rawDesc = "" +
 	"\x13MessageCacheRequest\x12\x10\n" +
 	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\x12\x10\n" +
 	"\x03Tid\x18\x02 \x01(\x03R\x03Tid\x12\x1c\n" +
-	"\tHeartbeat\x18\x03 \x01(\x03R\tHeartbeat\"0\n" +
+	"\tHeartbeat\x18\x03 \x01(\tR\tHeartbeat\"0\n" +
 	"\x14MessageCacheResponse\x12\x18\n" +
 	"\aSuccess\x18\x01 \x01(\bR\aSuccess\"*\n" +
 	"\x16GetMessageCacheRequest\x12\x10\n" +
-	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\"I\n" +
+	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\"\\\n" +
 	"\x17GetMessageCacheResponse\x12\x10\n" +
-	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\x12\x1c\n" +
-	"\tHeartbeat\x18\x02 \x01(\x03R\tHeartbeat2\xf3\x02\n" +
+	"\x03Uid\x18\x01 \x01(\x03R\x03Uid\x12/\n" +
+	"\x04list\x18\x02 \x03(\v2\x1b.collection.GetMessageCacheR\x04list\"/\n" +
+	"\x0fGetMessageCache\x12\x1c\n" +
+	"\tHeartbeat\x18\x01 \x01(\tR\tHeartbeat\"\x15\n" +
+	"\x13DataCleaningRequest\"0\n" +
+	"\x14DataCleaningResponse\x12\x18\n" +
+	"\aSuccess\x18\x01 \x01(\bR\aSuccess2\xc6\x03\n" +
 	"\n" +
 	"Collection\x12W\n" +
 	"\x0eDataCollection\x12!.collection.DataCollectionRequest\x1a\".collection.DataCollectionResponse\x12]\n" +
 	"\x10InformationStore\x12#.collection.InformationStoreRequest\x1a$.collection.InformationStoreResponse\x12Q\n" +
 	"\fMessageCache\x12\x1f.collection.MessageCacheRequest\x1a .collection.MessageCacheResponse\x12Z\n" +
-	"\x0fGetMessageCache\x12\".collection.GetMessageCacheRequest\x1a#.collection.GetMessageCacheResponseB\x0eZ\f./collectionb\x06proto3"
+	"\x0fGetMessageCache\x12\".collection.GetMessageCacheRequest\x1a#.collection.GetMessageCacheResponse\x12Q\n" +
+	"\fDataCleaning\x12\x1f.collection.DataCleaningRequest\x1a .collection.DataCleaningResponseB\x0eZ\f./collectionb\x06proto3"
 
 var (
 	file_collection_proto_rawDescOnce sync.Once
@@ -472,7 +603,7 @@ func file_collection_proto_rawDescGZIP() []byte {
 	return file_collection_proto_rawDescData
 }
 
-var file_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_collection_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_collection_proto_goTypes = []any{
 	(*DataCollectionRequest)(nil),    // 0: collection.DataCollectionRequest
 	(*DataCollectionResponse)(nil),   // 1: collection.DataCollectionResponse
@@ -482,21 +613,27 @@ var file_collection_proto_goTypes = []any{
 	(*MessageCacheResponse)(nil),     // 5: collection.MessageCacheResponse
 	(*GetMessageCacheRequest)(nil),   // 6: collection.GetMessageCacheRequest
 	(*GetMessageCacheResponse)(nil),  // 7: collection.GetMessageCacheResponse
+	(*GetMessageCache)(nil),          // 8: collection.GetMessageCache
+	(*DataCleaningRequest)(nil),      // 9: collection.DataCleaningRequest
+	(*DataCleaningResponse)(nil),     // 10: collection.DataCleaningResponse
 }
 var file_collection_proto_depIdxs = []int32{
-	0, // 0: collection.Collection.DataCollection:input_type -> collection.DataCollectionRequest
-	2, // 1: collection.Collection.InformationStore:input_type -> collection.InformationStoreRequest
-	4, // 2: collection.Collection.MessageCache:input_type -> collection.MessageCacheRequest
-	6, // 3: collection.Collection.GetMessageCache:input_type -> collection.GetMessageCacheRequest
-	1, // 4: collection.Collection.DataCollection:output_type -> collection.DataCollectionResponse
-	3, // 5: collection.Collection.InformationStore:output_type -> collection.InformationStoreResponse
-	5, // 6: collection.Collection.MessageCache:output_type -> collection.MessageCacheResponse
-	7, // 7: collection.Collection.GetMessageCache:output_type -> collection.GetMessageCacheResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	8,  // 0: collection.GetMessageCacheResponse.list:type_name -> collection.GetMessageCache
+	0,  // 1: collection.Collection.DataCollection:input_type -> collection.DataCollectionRequest
+	2,  // 2: collection.Collection.InformationStore:input_type -> collection.InformationStoreRequest
+	4,  // 3: collection.Collection.MessageCache:input_type -> collection.MessageCacheRequest
+	6,  // 4: collection.Collection.GetMessageCache:input_type -> collection.GetMessageCacheRequest
+	9,  // 5: collection.Collection.DataCleaning:input_type -> collection.DataCleaningRequest
+	1,  // 6: collection.Collection.DataCollection:output_type -> collection.DataCollectionResponse
+	3,  // 7: collection.Collection.InformationStore:output_type -> collection.InformationStoreResponse
+	5,  // 8: collection.Collection.MessageCache:output_type -> collection.MessageCacheResponse
+	7,  // 9: collection.Collection.GetMessageCache:output_type -> collection.GetMessageCacheResponse
+	10, // 10: collection.Collection.DataCleaning:output_type -> collection.DataCleaningResponse
+	6,  // [6:11] is the sub-list for method output_type
+	1,  // [1:6] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_collection_proto_init() }
@@ -510,7 +647,7 @@ func file_collection_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_collection_proto_rawDesc), len(file_collection_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

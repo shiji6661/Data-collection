@@ -6,12 +6,31 @@ import (
 	"fmt"
 )
 
-func MessageCache(in *collection.MessageCacheRequest) error {
-	key := fmt.Sprintf("%d:%d", in.Tid, in.Uid)
-	return global.Rdb.Set(global.CTX, key, in.Heartbeat, 0).Err()
+func MessageCache(uid, tid int64, heartbeat string) error {
+	key := fmt.Sprintf("%d:%d", tid, uid)
+	return global.Rdb.LPush(global.CTX, key, heartbeat).Err()
 }
 
-func GetMessageCache(id int64) (int64, error) {
-	key := fmt.Sprintf("%d:*", id)
-	return global.Rdb.Get(global.CTX, key).Int64()
+func GetMessageCache(id int64) (list []*collection.GetMessageCache, err error) {
+	key := fmt.Sprintf("%d:%d", id, global.MANAGE_ID)
+	lenCmd := global.Rdb.LLen(global.CTX, key)
+	fmt.Printf("获取到的列表长度命令结果: %v，错误: %v\n", lenCmd.Val(), lenCmd.Err())
+	if lenCmd.Err() != nil {
+		fmt.Println("获取列表长度失败:", lenCmd.Err())
+		return
+	}
+	val := lenCmd.Val()
+	result := global.Rdb.LRange(global.CTX, key, 0, val-1).Val()
+	fmt.Printf("LRange 获取结果: %v，错误: %v\n", result, lenCmd.Err())
+	fmt.Println(result)
+	for _, s := range result {
+		list = append(list, &collection.GetMessageCache{
+			Heartbeat: s,
+		})
+	}
+	return list, nil
+}
+
+func ClearMessageCache(uid int64) error {
+	return global.Rdb.Del(global.CTX, fmt.Sprintf("%d:%d", uid, global.MANAGE_ID)).Err()
 }

@@ -23,6 +23,7 @@ const (
 	Collection_InformationStore_FullMethodName = "/collection.Collection/InformationStore"
 	Collection_MessageCache_FullMethodName     = "/collection.Collection/MessageCache"
 	Collection_GetMessageCache_FullMethodName  = "/collection.Collection/GetMessageCache"
+	Collection_DataCleaning_FullMethodName     = "/collection.Collection/DataCleaning"
 )
 
 // CollectionClient is the client API for Collection service.
@@ -33,6 +34,7 @@ type CollectionClient interface {
 	InformationStore(ctx context.Context, in *InformationStoreRequest, opts ...grpc.CallOption) (*InformationStoreResponse, error)
 	MessageCache(ctx context.Context, in *MessageCacheRequest, opts ...grpc.CallOption) (*MessageCacheResponse, error)
 	GetMessageCache(ctx context.Context, in *GetMessageCacheRequest, opts ...grpc.CallOption) (*GetMessageCacheResponse, error)
+	DataCleaning(ctx context.Context, in *DataCleaningRequest, opts ...grpc.CallOption) (*DataCleaningResponse, error)
 }
 
 type collectionClient struct {
@@ -83,6 +85,16 @@ func (c *collectionClient) GetMessageCache(ctx context.Context, in *GetMessageCa
 	return out, nil
 }
 
+func (c *collectionClient) DataCleaning(ctx context.Context, in *DataCleaningRequest, opts ...grpc.CallOption) (*DataCleaningResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DataCleaningResponse)
+	err := c.cc.Invoke(ctx, Collection_DataCleaning_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CollectionServer is the server API for Collection service.
 // All implementations must embed UnimplementedCollectionServer
 // for forward compatibility.
@@ -91,6 +103,7 @@ type CollectionServer interface {
 	InformationStore(context.Context, *InformationStoreRequest) (*InformationStoreResponse, error)
 	MessageCache(context.Context, *MessageCacheRequest) (*MessageCacheResponse, error)
 	GetMessageCache(context.Context, *GetMessageCacheRequest) (*GetMessageCacheResponse, error)
+	DataCleaning(context.Context, *DataCleaningRequest) (*DataCleaningResponse, error)
 	mustEmbedUnimplementedCollectionServer()
 }
 
@@ -112,6 +125,9 @@ func (UnimplementedCollectionServer) MessageCache(context.Context, *MessageCache
 }
 func (UnimplementedCollectionServer) GetMessageCache(context.Context, *GetMessageCacheRequest) (*GetMessageCacheResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMessageCache not implemented")
+}
+func (UnimplementedCollectionServer) DataCleaning(context.Context, *DataCleaningRequest) (*DataCleaningResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DataCleaning not implemented")
 }
 func (UnimplementedCollectionServer) mustEmbedUnimplementedCollectionServer() {}
 func (UnimplementedCollectionServer) testEmbeddedByValue()                    {}
@@ -206,6 +222,24 @@ func _Collection_GetMessageCache_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Collection_DataCleaning_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DataCleaningRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CollectionServer).DataCleaning(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Collection_DataCleaning_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CollectionServer).DataCleaning(ctx, req.(*DataCleaningRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Collection_ServiceDesc is the grpc.ServiceDesc for Collection service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +262,10 @@ var Collection_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMessageCache",
 			Handler:    _Collection_GetMessageCache_Handler,
+		},
+		{
+			MethodName: "DataCleaning",
+			Handler:    _Collection_DataCleaning_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
