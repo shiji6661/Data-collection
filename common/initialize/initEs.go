@@ -10,7 +10,7 @@ func InitEs() {
 	var err error
 	cfg := elasticsearch.Config{
 		Addresses: []string{
-			"http://14.103.149.192:9200",
+			"http://14.103.140.251:9200",
 		},
 		// ...
 	}
