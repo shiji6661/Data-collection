@@ -45,3 +45,9 @@ const (
 )
 
 const MANAGE_ID = 1
+
+const (
+	DATABASE            = "mqtt"     //TODO: 数据库名称
+	PRIVATE             = "private"  //TODO: 私有主题
+	MESSAGES_COLLECTION = "messages" //TODO: 数据采集表
+)

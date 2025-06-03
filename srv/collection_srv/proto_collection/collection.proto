@@ -55,11 +55,29 @@ message DataCleaningResponse {
   bool Success = 1;
 }
 
+//todo:数据分析
+message DataAnalysisRequest {
+
+}
+message DataAnalysisResponse {
+  int64 Uid = 1;
+  int64 Rete = 2;
+}
+//todo:状态修改
+message UpdateStatusRequest {
+  int64 Uid = 1;
+  int64 Rete = 2;
+}
+message UpdateStatusResponse {
+  bool Success = 1;
+}
+
 service Collection {
   rpc DataCollection(DataCollectionRequest) returns(DataCollectionResponse);//todo:数据收集
   rpc InformationStore(InformationStoreRequest) returns(InformationStoreResponse);//todo:信息入库
   rpc MessageCache(MessageCacheRequest) returns(MessageCacheResponse);//todo:redis消息缓存
   rpc GetMessageCache(GetMessageCacheRequest) returns(GetMessageCacheResponse);//todo:redis缓存消息查看
   rpc DataCleaning(DataCleaningRequest) returns(DataCleaningResponse);//todo:数据清洗
+  rpc DataAnalysis(DataAnalysisRequest) returns(DataAnalysisResponse);//todo:数据分析
+  rpc UpdateStatus(UpdateStatusRequest) returns(UpdateStatusResponse);//todo:状态修改
 }
-

@@ -45,3 +45,30 @@ func (s ServerCollection) GetMessageCache(ctx context.Context, in *collection.Ge
 	}
 	return res, nil
 }
+
+// todo:数据清洗
+func (s ServerCollection) DataCleaning(ctx context.Context, in *collection.DataCleaningRequest) (*collection.DataCleaningResponse, error) {
+	res, err := logic.DataCleaning(in)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+// todo:数据分析
+func (s ServerCollection) DataAnalysis(ctx context.Context, in *collection.DataAnalysisRequest) (*collection.DataAnalysisResponse, error) {
+	res, err := logic.DataAnalysis(in)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+// todo:状态修改
+func (s ServerCollection) UpdateStatus(ctx context.Context, in *collection.UpdateStatusRequest) (*collection.UpdateStatusResponse, error) {
+	res, err := logic.UpdateStatus(in)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}

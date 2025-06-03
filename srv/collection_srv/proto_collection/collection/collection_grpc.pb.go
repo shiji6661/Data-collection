@@ -24,6 +24,8 @@ const (
 	Collection_MessageCache_FullMethodName     = "/collection.Collection/MessageCache"
 	Collection_GetMessageCache_FullMethodName  = "/collection.Collection/GetMessageCache"
 	Collection_DataCleaning_FullMethodName     = "/collection.Collection/DataCleaning"
+	Collection_DataAnalysis_FullMethodName     = "/collection.Collection/DataAnalysis"
+	Collection_UpdateStatus_FullMethodName     = "/collection.Collection/UpdateStatus"
 )
 
 // CollectionClient is the client API for Collection service.
@@ -35,6 +37,8 @@ type CollectionClient interface {
 	MessageCache(ctx context.Context, in *MessageCacheRequest, opts ...grpc.CallOption) (*MessageCacheResponse, error)
 	GetMessageCache(ctx context.Context, in *GetMessageCacheRequest, opts ...grpc.CallOption) (*GetMessageCacheResponse, error)
 	DataCleaning(ctx context.Context, in *DataCleaningRequest, opts ...grpc.CallOption) (*DataCleaningResponse, error)
+	DataAnalysis(ctx context.Context, in *DataAnalysisRequest, opts ...grpc.CallOption) (*DataAnalysisResponse, error)
+	UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error)
 }
 
 type collectionClient struct {
@@ -95,6 +99,26 @@ func (c *collectionClient) DataCleaning(ctx context.Context, in *DataCleaningReq
 	return out, nil
 }
 
+func (c *collectionClient) DataAnalysis(ctx context.Context, in *DataAnalysisRequest, opts ...grpc.CallOption) (*DataAnalysisResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DataAnalysisResponse)
+	err := c.cc.Invoke(ctx, Collection_DataAnalysis_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *collectionClient) UpdateStatus(ctx context.Context, in *UpdateStatusRequest, opts ...grpc.CallOption) (*UpdateStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateStatusResponse)
+	err := c.cc.Invoke(ctx, Collection_UpdateStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CollectionServer is the server API for Collection service.
 // All implementations must embed UnimplementedCollectionServer
 // for forward compatibility.
@@ -104,6 +128,8 @@ type CollectionServer interface {
 	MessageCache(context.Context, *MessageCacheRequest) (*MessageCacheResponse, error)
 	GetMessageCache(context.Context, *GetMessageCacheRequest) (*GetMessageCacheResponse, error)
 	DataCleaning(context.Context, *DataCleaningRequest) (*DataCleaningResponse, error)
+	DataAnalysis(context.Context, *DataAnalysisRequest) (*DataAnalysisResponse, error)
+	UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error)
 	mustEmbedUnimplementedCollectionServer()
 }
 
@@ -128,6 +154,12 @@ func (UnimplementedCollectionServer) GetMessageCache(context.Context, *GetMessag
 }
 func (UnimplementedCollectionServer) DataCleaning(context.Context, *DataCleaningRequest) (*DataCleaningResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DataCleaning not implemented")
+}
+func (UnimplementedCollectionServer) DataAnalysis(context.Context, *DataAnalysisRequest) (*DataAnalysisResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DataAnalysis not implemented")
+}
+func (UnimplementedCollectionServer) UpdateStatus(context.Context, *UpdateStatusRequest) (*UpdateStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStatus not implemented")
 }
 func (UnimplementedCollectionServer) mustEmbedUnimplementedCollectionServer() {}
 func (UnimplementedCollectionServer) testEmbeddedByValue()                    {}
@@ -240,6 +272,42 @@ func _Collection_DataCleaning_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Collection_DataAnalysis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DataAnalysisRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CollectionServer).DataAnalysis(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Collection_DataAnalysis_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CollectionServer).DataAnalysis(ctx, req.(*DataAnalysisRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Collection_UpdateStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CollectionServer).UpdateStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Collection_UpdateStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CollectionServer).UpdateStatus(ctx, req.(*UpdateStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Collection_ServiceDesc is the grpc.ServiceDesc for Collection service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +334,14 @@ var Collection_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DataCleaning",
 			Handler:    _Collection_DataCleaning_Handler,
+		},
+		{
+			MethodName: "DataAnalysis",
+			Handler:    _Collection_DataAnalysis_Handler,
+		},
+		{
+			MethodName: "UpdateStatus",
+			Handler:    _Collection_UpdateStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

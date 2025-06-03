@@ -11,11 +11,12 @@ import (
 func InformationStore(in *collection.InformationStoreRequest) error {
 	// 选择数据库和集合
 	coll := global.Client.Database(in.Database).Collection(in.Table)
+	now := time.Now().Format("20060102")
 	bsd := bson.D{
-		{"Uid", in.Uid},
-		{"Tid", in.Tid},
-		{"Heartbeat", in.Heartbeat},
-		{"CreateTime", time.Now().String()},
+		{Key: "Uid", Value: in.Uid},
+		{Key: "Tid", Value: in.Tid},
+		{Key: "Heartbeat", Value: in.Heartbeat},
+		{Key: "CreateTime", Value: now},
 	}
 	_, err := coll.InsertOne(global.CTX, bsd)
 	if err != nil {

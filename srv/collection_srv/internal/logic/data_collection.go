@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-// todo:数据接收
+// todo:数据采集
 func DataCollection() (*collection.DataCollectionResponse, error) {
 	// 启动MQTT客户端
 	client, err := pkg_collection.StartMqtt()

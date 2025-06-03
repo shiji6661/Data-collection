@@ -104,7 +104,6 @@ func SendFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64) {
 		response.WsResponseError(c, 100001, "目标用户ID不能为空")
 		return
 	}
-	fmt.Println("2222", toUserId)
 	//mutex.RLock()
 	con := OnlineUser[toUserId]
 	//mutex.RUnlock()
@@ -119,7 +118,6 @@ func SendFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64) {
 			response.WsResponseError(c, 100004, err.Error())
 			return
 		}
-		fmt.Println("3333")
 		//response.WsResponseError(c, 100003, "消息已存入缓存，待用户上线后再发送")
 		//response.WsResponseError(c, 100002, "目标用户未上线")
 		//return

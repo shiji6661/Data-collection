@@ -26,13 +26,16 @@ func MsgCreateMongo(msg pkg_collection.MqttMessage) error {
 		return fmt.Errorf("JSON解析失败: %v", err)
 	}
 	// 选择数据库和集合
-	collection := global.Client.Database("mqtt").Collection("messages")
+	collection := global.Client.Database(global.DATABASE).Collection(global.MESSAGES_COLLECTION)
+	now := msg.Time.Format("20060102")
+
 	// 插入消息
 	d := bson.D{
 		{Key: "topic", Value: msg.Topic},
 		{Key: "uid", Value: payload.Uid},
 		{Key: "rete", Value: payload.Rete},
-		{Key: "time", Value: msg.Time},
+		{Key: "time", Value: now},
+		{Key: "status", Value: 0},
 	}
 	_, err = collection.InsertOne(global.CTX, d)
 	if err != nil {
