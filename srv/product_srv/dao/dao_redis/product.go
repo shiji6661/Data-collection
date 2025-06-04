@@ -10,7 +10,8 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
 	"models/model_product/model_redis"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
+
 	"time"
 
 	"strconv"

@@ -2,8 +2,8 @@ package logic
 
 import (
 	"errors"
-	"user_srv/dao/dao_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/dao/dao_mysql"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo 展示会员

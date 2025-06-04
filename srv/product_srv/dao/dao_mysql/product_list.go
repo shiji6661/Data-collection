@@ -4,7 +4,7 @@ import (
 	"errors"
 	"go.uber.org/zap"
 	"models/model_product/model_mysql"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
 )
 
 // 商品列表展示

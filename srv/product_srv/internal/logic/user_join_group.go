@@ -7,8 +7,9 @@ import (
 	"go.uber.org/zap"
 	"kuteng-RabbitMQ/SimlpePublish"
 	"order_srv/pkg"
-	"product_srv/dao/dao_mysql"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
+
 	"strconv"
 )
 

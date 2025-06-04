@@ -4,7 +4,7 @@ import (
 	"common/utils"
 	"errors"
 	"models/model_user/model_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 func CreateUser(in *user.UserRegisterRequest) (*model_mysql.User, error) {

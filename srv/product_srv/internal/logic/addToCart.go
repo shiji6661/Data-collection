@@ -8,8 +8,8 @@ import (
 	"errors"
 	"fmt"
 	"go.uber.org/zap"
-	"product_srv/dao/dao_redis"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
 
 	"strconv"
 )

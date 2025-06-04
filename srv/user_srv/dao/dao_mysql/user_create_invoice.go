@@ -11,8 +11,8 @@ import (
 	"models/model_user/model_mysql"
 	"os"
 	"time"
-	"user_srv/pkg"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/pkg"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // TODO:生成发票号码根据数据库id

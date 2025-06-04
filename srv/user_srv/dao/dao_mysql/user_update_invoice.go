@@ -4,7 +4,7 @@ import (
 	"errors"
 	"go.uber.org/zap"
 	"models/model_user/model_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo:用户修改发票

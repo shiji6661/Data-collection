@@ -8,7 +8,8 @@ import (
 	"github.com/elastic/go-elasticsearch/v7/esapi"
 	"log"
 	"models/model_product/model_mysql"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
+
 	"strconv"
 	"sync"
 )

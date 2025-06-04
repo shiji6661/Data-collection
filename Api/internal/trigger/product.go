@@ -6,7 +6,7 @@ import (
 	"Api/internal/response"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
 )
 
 // TODO：商品详情
@@ -453,25 +453,14 @@ func UserJoinGroup(c *gin.Context) {
 	response.ResponseSuccess(c, joinGroup)
 }
 
-<<<<<<< HEAD
 // todo 商品信息写入es
 func ProductCreateToEs(c *gin.Context) {
 	var data request.ToEs
-=======
-// todo:商品添加至购物车
-func AddCart(c *gin.Context) {
-	userId := c.GetUint("userId")
-	fmt.Println(userId)
-	var data request.AddCartRequest
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err := c.ShouldBind(&data); err != nil {
 		response.ResponseError400(c, err.Error())
 		return
 	}
-<<<<<<< HEAD
-	es, err := handler.ProductCreateToEs(c, &product.ProductCreateToESRequest{
-		Table: data.TableName,
-	})
+	es, err := handler.ProductCreateToEs(c, &product.ProductCreateToESRequest{Table: data.TableName})
 	if err != nil {
 		response.ResponseError(c, err.Error())
 		return
@@ -479,10 +468,11 @@ func AddCart(c *gin.Context) {
 	response.ResponseSuccess(c, es)
 }
 
-// todo 查询es中的商品信息
-func ProductSearchToEs(c *gin.Context) {
-	var data request.SearchToEs
-=======
+// todo:商品添加至购物车
+func AddCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	fmt.Println(userId)
+	var data request.AddCartRequest
 	cart, err := handler.AddCart(c, &product.AddCartRequest{
 		UserId:    int64(userId),
 		ProductId: int64(data.ProductId),
@@ -495,19 +485,29 @@ func ProductSearchToEs(c *gin.Context) {
 	response.ResponseSuccess(c, cart.Success)
 }
 
-// todo: 移除购物车中商品
-func DeleteProductFromCart(c *gin.Context) {
-	userId := c.GetUint("userId")
-	var data request.RemoveFromCartRequest
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
+// todo 查询es中的商品信息
+func ProductSearchToEs(c *gin.Context) {
+	var data request.SearchToEs
 	if err := c.ShouldBind(&data); err != nil {
 		response.ResponseError400(c, err.Error())
 		return
 	}
-<<<<<<< HEAD
 	es, err := handler.ProductSearchToEs(c, &product.ProductSearchESRequest{Name: data.Name})
-=======
+	if err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, es)
+}
 
+// todo: 移除购物车中商品
+func DeleteProductFromCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.RemoveFromCartRequest
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
 	cart, err := handler.DeleteProductFromCart(c, &product.RemoveFromCartRequest{
 		UserId:    int64(userId),
 		ProductId: int64(data.ProductId),
@@ -582,14 +582,10 @@ func CartProductCount(c *gin.Context) {
 		return
 	}
 	count, err := handler.CartProductCount(c, &product.CartProductCountRequest{UserId: int64(userId)})
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err != nil {
 		response.ResponseError(c, err.Error())
 		return
 	}
-<<<<<<< HEAD
-	response.ResponseSuccess(c, es)
-=======
 	response.ResponseSuccess(c, count)
 }
 
@@ -607,5 +603,4 @@ func CartProductTotalPrice(c *gin.Context) {
 		return
 	}
 	response.ResponseSuccess(c, price)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }

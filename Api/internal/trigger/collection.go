@@ -4,7 +4,8 @@ import (
 	"Api/global"
 	"Api/internal/handler"
 	"Api/internal/response"
-	"collection_srv/proto_collection/collection"
+	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"

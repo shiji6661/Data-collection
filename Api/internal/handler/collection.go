@@ -2,7 +2,8 @@ package handler
 
 import (
 	"Api/client"
-	"collection_srv/proto_collection/collection"
+	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 	"context"
 )
 

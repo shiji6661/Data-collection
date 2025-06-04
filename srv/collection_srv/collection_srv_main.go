@@ -1,11 +1,11 @@
 package main
 
 import (
-	"collection_srv/grpc_collection"
-	"collection_srv/internal"
 	"common/initialize"
 	"common/viper"
 	"google.golang.org/grpc"
+	"weikang/Data-collection/srv/collection_srv/grpc_collection"
+	"weikang/Data-collection/srv/collection_srv/internal"
 )
 
 func main() {

@@ -4,8 +4,8 @@ import (
 	user2 "common/utils/user"
 	"errors"
 	"math/rand"
-	"user_srv/dao/dao_redis"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/dao/dao_redis"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo:短信验证码逻辑

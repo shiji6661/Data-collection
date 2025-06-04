@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"models/model_product/model_mysql"
 	"time"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 
 	user2 "Data-collection/way/user"
 )

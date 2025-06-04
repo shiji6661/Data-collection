@@ -4,7 +4,7 @@ import (
 	"common/global"
 	user2 "common/utils/user"
 	"models/model_user/model_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo 用户邀请码生成

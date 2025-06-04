@@ -1,10 +1,10 @@
 package dao_mongo
 
 import (
-	"collection_srv/proto_collection/collection"
 	"common/global"
 	"go.mongodb.org/mongo-driver/bson"
 	"time"
+	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
 )
 
 // todo:信息入库

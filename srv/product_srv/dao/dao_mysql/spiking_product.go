@@ -8,8 +8,9 @@ import (
 	"models/model_product/model_mysql"
 	"models/model_product/model_redis"
 	o "order_srv/pkg"
-	"product_srv/pkg"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/pkg"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
+
 	"strconv"
 	"time"
 )

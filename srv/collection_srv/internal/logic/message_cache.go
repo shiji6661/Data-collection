@@ -1,8 +1,8 @@
 package logic
 
 import (
-	"collection_srv/dao/dao_redis"
-	"collection_srv/proto_collection/collection"
+	"weikang/Data-collection/srv/collection_srv/dao/dao_redis"
+	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
 )
 
 // todo:redis消息缓存

@@ -3,7 +3,7 @@ package model_mysql
 import (
 	"common/global"
 	"time"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo 用户等级表

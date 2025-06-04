@@ -3,9 +3,9 @@ package logic
 import (
 	"errors"
 	"models/model_product/model_mysql"
-	"product_srv/dao/dao_mysql"
-	"product_srv/proto_product/product"
 	"time"
+	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
 )
 
 // 用户帮砍

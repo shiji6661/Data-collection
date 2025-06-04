@@ -4,7 +4,7 @@ import (
 	"Api/client"
 	"context"
 	"github.com/gin-gonic/gin"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo:用户账号密码注册

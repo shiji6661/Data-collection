@@ -2,7 +2,7 @@ package dao_mysql
 
 import (
 	"models/model_user/model_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 func SendMessage(in *user.SendMessageRequest) (s *model_mysql.Message, err error) {

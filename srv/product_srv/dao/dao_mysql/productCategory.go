@@ -3,7 +3,7 @@ package dao_mysql
 import (
 	"errors"
 	"models/model_product/model_mysql"
-	"product_srv/proto_product/product"
+	"weikang/Data-collection/srv/product_srv/proto_product/product"
 )
 
 // todo:商品分类浏览

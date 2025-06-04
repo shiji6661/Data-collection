@@ -4,9 +4,10 @@ import (
 	"context"
 	"errors"
 	"order_srv/dao/dao_mysql"
+	"order_srv/dao/dao_redis"
 	"order_srv/pkg"
 	"order_srv/proto_order/order"
-	"product_srv/dao/dao_redis"
+
 	"strconv"
 )
 

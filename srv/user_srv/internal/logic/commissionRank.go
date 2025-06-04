@@ -2,7 +2,7 @@ package logic
 
 import (
 	"models/model_user/model_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // 佣金排行榜

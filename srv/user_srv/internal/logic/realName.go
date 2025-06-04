@@ -3,8 +3,8 @@ package logic
 import (
 	"common/pkg/pkg_user"
 	"errors"
-	"user_srv/dao/dao_mysql"
-	"user_srv/proto_user/user"
+	"weikang/Data-collection/srv/user_srv/dao/dao_mysql"
+	"weikang/Data-collection/srv/user_srv/proto_user/user"
 )
 
 // todo 实名认证

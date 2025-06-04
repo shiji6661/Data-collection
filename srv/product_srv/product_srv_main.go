@@ -5,9 +5,9 @@ import (
 	"common/viper"
 	"context"
 	"google.golang.org/grpc"
-	"product_srv/dao/dao_redis"
-	"product_srv/grpc_product"
-	"product_srv/internal"
+	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
+	"weikang/Data-collection/srv/product_srv/grpc_product"
+	"weikang/Data-collection/srv/product_srv/internal"
 )
 
 func main() {
