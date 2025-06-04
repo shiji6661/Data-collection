@@ -1,16 +1,16 @@
 package logic
 
 import (
-	"Data-collection/way/user"
+
 	"context"
 	"errors"
 	"fmt"
 	"go.uber.org/zap"
 	"models/model_product/model_mysql"
-	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
-
+	"product_srv/dao/dao_redis"
+	"product_srv/proto_product/product"
 	"strconv"
+	"way/user"
 )
 
 // TODO: 商品加入购物车

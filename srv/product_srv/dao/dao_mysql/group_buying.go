@@ -1,7 +1,7 @@
 package dao_mysql
 
 import (
-	"Data-collection/way/groupBuyingProduct"
+
 	"common/global"
 	"errors"
 	"fmt"
@@ -9,7 +9,8 @@ import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"models/model_product/model_mysql"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
+	"way/groupBuyingProduct"
 
 	"time"
 )

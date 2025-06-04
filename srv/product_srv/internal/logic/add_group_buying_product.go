@@ -1,14 +1,15 @@
 package logic
 
 import (
-	"Data-collection/way/merchant"
+
 	"context"
 	"errors"
 	"fmt"
 	"go.uber.org/zap"
-	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/dao/dao_mysql"
+	"product_srv/dao/dao_redis"
+	"product_srv/proto_product/product"
+	"way/merchant"
 )
 
 // 创建拼团商品

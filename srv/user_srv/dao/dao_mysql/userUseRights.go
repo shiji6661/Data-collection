@@ -2,7 +2,7 @@ package dao_mysql
 
 import (
 	"errors"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 func GetUserUseRightsList(uid int64) (newList []*user.UseRights, err error) {

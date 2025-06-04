@@ -1,14 +1,15 @@
 package dao_mysql
 
 import (
-	"Data-collection/way/coupon"
+
 	"errors"
 	"go.uber.org/zap"
 	"models/model_product/model_mysql"
 	"time"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
+	"way/coupon"
 
-	user2 "Data-collection/way/user"
+	user2 "way/user"
 )
 
 // TODO:查询用户是否已经领取过该优惠卷

@@ -2,7 +2,7 @@ package dao_mysql
 
 import (
 	"models/model_order/model_mysql"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 var O *model_mysql.Order

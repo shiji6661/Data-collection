@@ -1,9 +1,10 @@
 package client
 
 import (
+	"collection_srv/proto_collection/collection"
 	"context"
 	"google.golang.org/grpc"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 )
 
 type HandlerCollection func(ctx context.Context, in collection.CollectionClient) (interface{}, error)

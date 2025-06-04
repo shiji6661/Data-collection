@@ -1,9 +1,10 @@
 package logic
 
 import (
-	order2 "Data-collection/way/order"
-	"Data-collection/way/product"
-	"Data-collection/way/user"
+	order2 "way/order"
+	"way/product"
+	"way/user"
+
 	"errors"
 	"models/model_user/model_mysql"
 	"order_srv/dao/dao_mysql"

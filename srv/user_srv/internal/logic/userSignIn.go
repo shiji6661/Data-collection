@@ -5,11 +5,10 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
-	"weikang/Data-collection/srv/user_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
-
+	"product_srv/dao/dao_redis"
 	"time"
+	"user_srv/dao/dao_mysql"
+	"user_srv/proto_user/user"
 )
 
 // 用户签到

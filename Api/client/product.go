@@ -3,7 +3,7 @@ package client
 import (
 	"context"
 	"google.golang.org/grpc"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
 )
 
 type HandlerProduct func(ctx context.Context, in product.ProductClient) (interface{}, error)

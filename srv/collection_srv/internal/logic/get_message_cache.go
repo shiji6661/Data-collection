@@ -1,11 +1,10 @@
 package logic
 
 import (
+	"collection_srv/dao/dao_redis"
+	"collection_srv/proto_collection/collection"
 	"errors"
-	"weikang/Data-collection/srv/collection_srv/dao/dao_redis"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
 )
-
 // todo:redis缓存消息查看
 func GetMessageCache(in *collection.GetMessageCacheRequest) (*collection.GetMessageCacheResponse, error) {
 	cache, err := dao_redis.GetMessageCache(in.Uid)

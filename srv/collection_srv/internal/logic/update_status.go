@@ -1,8 +1,8 @@
 package logic
 
 import (
-	"weikang/Data-collection/srv/collection_srv/dao/dao_mongo"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+	"collection_srv/dao/dao_mongo"
+	"collection_srv/proto_collection/collection"
 )
 
 // mongo

@@ -3,7 +3,7 @@ package dao_mysql
 import (
 	"errors"
 	"models/model_user/model_mysql"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 func FindUserLevelRights(lid int64) (ri []*user.RightsInfo, err error) {

@@ -3,8 +3,8 @@ package server
 import (
 	"context"
 	"errors"
-	"weikang/Data-collection/srv/product_srv/internal/logic"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/internal/logic"
+	"product_srv/proto_product/product"
 )
 
 type ServerProduct struct {

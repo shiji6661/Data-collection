@@ -5,8 +5,7 @@ import (
 	"Api/internal/handler"
 	"Api/internal/request"
 	"Api/internal/response"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
-
+	"collection_srv/proto_collection/collection"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"

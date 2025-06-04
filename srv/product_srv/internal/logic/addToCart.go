@@ -1,15 +1,16 @@
 package logic
 
 import (
-	pro "Data-collection/way/product"
-	"Data-collection/way/user"
+	"product_srv/dao/dao_redis"
+	"product_srv/proto_product/product"
+	pro "way/product"
+	"way/user"
+
 	"common/global"
 	"context"
 	"errors"
 	"fmt"
 	"go.uber.org/zap"
-	"weikang/Data-collection/srv/product_srv/dao/dao_redis"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
 
 	"strconv"
 )

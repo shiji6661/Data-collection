@@ -4,7 +4,7 @@ import (
 	"common/global"
 	"gorm.io/gorm"
 	"sort"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 type User struct {

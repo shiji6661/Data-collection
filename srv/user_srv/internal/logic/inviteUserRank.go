@@ -3,7 +3,7 @@ package logic
 import (
 	"fmt"
 	"models/model_user/model_mysql"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 func InviteUserRank(in *user.InviteUserListRequest) (*user.InviteUserListResponse, error) {

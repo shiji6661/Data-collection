@@ -1,7 +1,7 @@
 package logic
 
 import (
-	"Data-collection/way/user"
+
 	"common/global"
 	user2 "common/utils/user"
 	"errors"
@@ -11,10 +11,10 @@ import (
 	"kuteng-RabbitMQ/SimlpePublish"
 	"models/model_product/model_mysql"
 	"order_srv/pkg"
-	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
-
+	"product_srv/dao/dao_mysql"
+	"product_srv/proto_product/product"
 	"strconv"
+	"way/user"
 )
 
 // todo:用户拼团

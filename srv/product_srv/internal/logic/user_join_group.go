@@ -1,16 +1,16 @@
 package logic
 
 import (
-	"Data-collection/way/user"
+
 	"errors"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"kuteng-RabbitMQ/SimlpePublish"
 	"order_srv/pkg"
-	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
-
+	"product_srv/dao/dao_mysql"
+	"product_srv/proto_product/product"
 	"strconv"
+	"way/user"
 )
 
 // todo:用户加入拼团

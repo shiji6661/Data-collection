@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"path"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 // todo:用户注册

@@ -1,9 +1,10 @@
 package dao_redis
 
 import (
+	"collection_srv/proto_collection/collection"
 	"common/global"
 	"fmt"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 )
 
 func MessageCache(uid, tid int64, heartbeat string) error {

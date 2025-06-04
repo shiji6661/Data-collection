@@ -3,7 +3,7 @@ package model_mysql
 import (
 	"common/global"
 	"gorm.io/gorm"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
 )
 
 // todo:商品表

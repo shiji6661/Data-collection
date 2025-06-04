@@ -2,7 +2,7 @@ package model_mysql
 
 import (
 	"common/global"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 type LevelRights struct {

@@ -1,8 +1,8 @@
 package logic
 
 import (
-	"weikang/Data-collection/srv/product_srv/pkg"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/pkg"
+	"product_srv/proto_product/product"
 )
 
 // todo 查询ES中的商品信息

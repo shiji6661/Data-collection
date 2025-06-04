@@ -5,8 +5,8 @@ import (
 	user2 "common/utils/user"
 	"context"
 	"errors"
-	"weikang/Data-collection/srv/user_srv/internal/logic"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/internal/logic"
+	"user_srv/proto_user/user"
 )
 
 type ServerUser struct {

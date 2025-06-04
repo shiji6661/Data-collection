@@ -1,9 +1,10 @@
 package server
 
 import (
+	"collection_srv/internal/logic"
+	"collection_srv/proto_collection/collection"
 	"context"
-	"weikang/Data-collection/srv/collection_srv/internal/logic"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 )
 
 type ServerCollection struct {

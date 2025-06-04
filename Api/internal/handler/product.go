@@ -3,7 +3,7 @@ package handler
 import (
 	"Api/client"
 	"context"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
 )
 
 // todo:商品详情

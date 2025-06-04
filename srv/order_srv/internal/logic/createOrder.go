@@ -1,14 +1,15 @@
 package logic
 
 import (
-	"Data-collection/way/product"
-	"Data-collection/way/user"
+
 	"errors"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"kuteng-RabbitMQ/SimlpePublish"
 	"order_srv/pkg"
 	"order_srv/proto_order/order"
+	"way/product"
+	"way/user"
 
 	"strconv"
 )

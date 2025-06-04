@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"models/model_user/model_mysql"
 	"time"
-	"weikang/Data-collection/srv/user_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/dao/dao_mysql"
+	"user_srv/proto_user/user"
 )
 
 var U *model_mysql.User

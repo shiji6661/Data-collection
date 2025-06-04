@@ -4,8 +4,8 @@ import (
 	"common/initialize"
 	"common/viper"
 	"google.golang.org/grpc"
-	"weikang/Data-collection/srv/user_srv/grpc_user"
-	"weikang/Data-collection/srv/user_srv/internal"
+	"user_srv/grpc_user"
+	"user_srv/internal"
 )
 
 func main() {

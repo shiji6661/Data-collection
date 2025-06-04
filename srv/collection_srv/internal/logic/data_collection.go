@@ -1,10 +1,11 @@
 package logic
 
 import (
+	"collection_srv/dao/dao_mongo"
+	"collection_srv/proto_collection/collection"
 	"common/pkg/pkg_collection"
 	"fmt"
-	"weikang/Data-collection/srv/collection_srv/dao/dao_mongo"
-	"weikang/Data-collection/srv/collection_srv/proto_collection/collection"
+
 )
 
 // todo:数据采集

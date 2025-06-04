@@ -1,8 +1,8 @@
 package logic
 
 import (
-	"weikang/Data-collection/srv/product_srv/dao/dao_mysql"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/dao/dao_mysql"
+	"product_srv/proto_product/product"
 )
 
 // TODO:商家添加优惠卷

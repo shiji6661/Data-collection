@@ -2,7 +2,7 @@ package dao_mysql
 
 import (
 	"models/model_product/model_mysql"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
 )
 
 const (

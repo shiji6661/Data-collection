@@ -6,7 +6,7 @@ import (
 	"Api/internal/response"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"weikang/Data-collection/srv/product_srv/proto_product/product"
+	"product_srv/proto_product/product"
 )
 
 // TODO：商品详情

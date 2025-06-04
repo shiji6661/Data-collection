@@ -2,7 +2,7 @@ package dao_mysql
 
 import (
 	"errors"
-	"weikang/Data-collection/srv/user_srv/proto_user/user"
+	"user_srv/proto_user/user"
 )
 
 func GetUserInfo(id int64) (*user.UserInfoResponse, error) {
