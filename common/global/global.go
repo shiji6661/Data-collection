@@ -51,3 +51,11 @@ const (
 	PRIVATE             = "private"  //TODO: 私有主题
 	MESSAGES_COLLECTION = "messages" //TODO: 数据采集表
 )
+
+const (
+	BROKER    = "mqtt://14.103.140.6:1883"
+	TOPIC     = "client"
+	QOS       = 1 // 消息质量
+	USER_NAME = "test"
+	PASSWORD  = "1gzrhhsc5YDHR"
+)

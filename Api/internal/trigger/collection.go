@@ -33,16 +33,17 @@ func DataCleaning(c *gin.Context) {
 // 模拟,应为自动监控警报
 // TODO: 数据分析
 func DataAnalysis(c *gin.Context) {
+	//数据查询
 	analysis, err := handler.DataAnalysis(c, &collection.DataAnalysisRequest{})
 	if err != nil {
 		response.ResponseError400(c, err.Error())
 		return
 	}
 	fmt.Println("心跳值:", analysis.Rete)
-	if analysis.Rete >= global.HEARTBEAT {
+	if analysis.Rete >= global.HEARTBEAT_BIG {
 		// 构建消息内容
 		msg := fmt.Sprintf("警告：您的心跳值 %d,已超过阈值 %d",
-			analysis.Rete, global.HEARTBEAT)
+			analysis.Rete, global.HEARTBEAT_BIG)
 
 		// 获取WebSocket连接
 		wsConn, exists := OnlineUser[analysis.Uid]
@@ -56,8 +57,7 @@ func DataAnalysis(c *gin.Context) {
 		if err != nil {
 			log.Printf("向用户 %d 发送心跳警告消息失败: %v", analysis.Uid, err)
 		} else {
-			fmt.Println("心跳值:", analysis.Rete)
-			//TODO:状态修改
+			//发送成功后，更新状态
 			status, err := handler.UpdateStatus(c, &collection.UpdateStatusRequest{
 				Uid:  analysis.Uid,
 				Rete: analysis.Rete,
@@ -71,5 +71,5 @@ func DataAnalysis(c *gin.Context) {
 		}
 
 	}
-	response.ResponseSuccess(c, "状态修改成功")
+	response.ResponseSuccess(c, analysis.Rete)
 }

@@ -1,6 +1,7 @@
 package pkg_collection
 
 import (
+	"common/global"
 	"fmt"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"log"
@@ -12,11 +13,6 @@ import (
 )
 
 // 配置信息
-const (
-	broker = "mqtt://14.103.140.6:1883"
-	topic  = "client"
-	qos    = 1 // 消息质量
-)
 
 // 消息结构
 type MqttMessage struct {
@@ -34,18 +30,18 @@ func StartMqtt() (mqtt.Client, error) {
 	// 创建MQTT客户端选项
 	clientID := fmt.Sprintf("go-mqtt-client-%d", rand.Intn(10000))
 	opts := mqtt.NewClientOptions()
-	opts.AddBroker(broker)
+	opts.AddBroker(global.BROKER)
 	opts.SetClientID(clientID)
-	opts.SetUsername("test")
-	opts.SetPassword("1gzrhhsc5YDHR")
+	opts.SetUsername(global.USER_NAME)
+	opts.SetPassword(global.PASSWORD)
 	opts.SetAutoReconnect(true)
 	opts.SetMaxReconnectInterval(10 * time.Second)
 	opts.SetOnConnectHandler(func(client mqtt.Client) {
 		fmt.Println("成功连接到MQTT服务器")
-		if token := client.Subscribe(topic, qos, nil); token.Wait() && token.Error() != nil {
+		if token := client.Subscribe(global.TOPIC, global.QOS, nil); token.Wait() && token.Error() != nil {
 			log.Fatalf("订阅主题失败: %v", token.Error())
 		}
-		fmt.Printf("已订阅主题: %s\n", topic)
+		fmt.Printf("已订阅主题: %s\n", global.TOPIC)
 	})
 
 	// 消息处理 - 将消息发送到通道
