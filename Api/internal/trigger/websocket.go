@@ -108,6 +108,7 @@ func SendFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64) {
 	con := OnlineUser[toUserId]
 	//mutex.RUnlock()
 	if con == nil {
+		fmt.Printf("用户未上线")
 		//TODO:用户未上线时，消息存入redis，待用户上线后再发送
 		_, err = handler.MessageCache(conn, &collection.MessageCacheRequest{
 			Uid:       uid,
@@ -122,7 +123,11 @@ func SendFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64) {
 		//response.WsResponseError(c, 100002, "目标用户未上线")
 		//return
 	} else {
-		response.WsResponseSuccess(OnlineUser[uid], msg)
+		if err = response.WsResponseSuccess(OnlineUser[toUserId], msg); err != nil {
+			fmt.Printf("向用户 %d 发送消息失败: %v", uid, err)
+			// 发送失败时可以选择断开连接
+			//m.removeConnection(userId)
+		}
 		//TODO:消息入MongoDB逻辑
 		_, err = handler.InformationStore(conn, &collection.InformationStoreRequest{
 			Uid:       uid,
@@ -147,6 +152,7 @@ func SendFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64) {
 		}
 
 	}
+
 }
 
 // todo:此函数用于处理用户上线请求。
@@ -173,7 +179,6 @@ func OnlineFunc(c *websocket.Conn, message []byte, conn *gin.Context, uid int64)
 		fmt.Printf("通知用户 %d 上线成功失败: %v", uid, err)
 		return
 	} else {
-		fmt.Printf("通知用户 %d 上线成功成功", uid)
 		//TODO:查看是否有未读消息，有则发送
 		cache, err := handler.GetMessageCache(conn, &collection.GetMessageCacheRequest{Uid: uid})
 		if err != nil {

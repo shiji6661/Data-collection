@@ -7,6 +7,7 @@ import (
 
 type AppConfig struct {
 	NaCosAppFig
+	MqttFig
 }
 type NaCosAppFig struct {
 	NamespaceId string
@@ -14,6 +15,14 @@ type NaCosAppFig struct {
 	Port        uint64
 	DataId      string
 	Group       string
+}
+
+type MqttFig struct {
+	Broker   string
+	Topic    string
+	Qos      int64
+	UserName string
+	Password string
 }
 
 var Config AppConfig
