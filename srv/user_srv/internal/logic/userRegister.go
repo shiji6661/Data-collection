@@ -15,7 +15,6 @@ var U *model_mysql.User
 
 // todo:用户注册逻辑
 func UserRegister(in *user.UserRegisterRequest) (*user.UserRegisterResponse, error) {
-
 	var id *model_mysql.User
 	fmt.Println(in.InviteCode)
 	users, err := dao_mysql.FindUserByUserName(in.UserName)
@@ -58,7 +57,6 @@ func UserRegister(in *user.UserRegisterRequest) (*user.UserRegisterResponse, err
 	}
 
 	//se, err := user2.ParseInviteCode(in.InviteCode)
-	fmt.Println(222222222)
 	fmt.Println(in.InviteCode)
 
 	if in.InviteCode != "" {

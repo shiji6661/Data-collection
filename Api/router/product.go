@@ -17,6 +17,10 @@ func LoadProduct(r *gin.Engine) {
 
 		product.POST("/add/coupon", trigger.AddCoupon) // todo:添加优惠卷
 
+		product.GET("/create/to/es", trigger.ProductCreateToEs) //todo 将商品信息写入ES
+
+		product.GET("/search/es", trigger.ProductSearchToEs) //todo 查询ES中的商品信息
+
 		// 用户中间件
 		product.Use(pkg.JWTAuth("2209A"))
 		product.POST("/createBargainUser", trigger.CreateBargainUser) // todo:用户参与砍价

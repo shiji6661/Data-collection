@@ -1,13 +1,13 @@
 package logic
 
 import (
+	"Data-collection/way/merchant"
 	"context"
 	"errors"
 	"go.uber.org/zap"
 	"product_srv/dao/dao_mysql"
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
-	"way/merchant"
 )
 
 // 删除拼团商品

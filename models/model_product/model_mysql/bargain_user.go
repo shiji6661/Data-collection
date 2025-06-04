@@ -14,6 +14,7 @@ type BargainUser struct {
 	BargainPrice    float64   `gorm:"column:bargain_price;type:decimal(8, 2);comment:砍价金额;default:NULL;" json:"bargain_price"`                    // 砍价金额
 	Price           float64   `gorm:"column:price;type:decimal(8, 2) UNSIGNED;comment:砍掉后的价格;default:NULL;" json:"price"`                         // 砍掉的价格
 	Status          uint8     `gorm:"column:status;type:tinyint UNSIGNED;comment:状态 1参与中 2 活动结束参与失败 3活动结束参与成功;default:1;" json:"status"`          // 状态 1参与中 2 活动结束参与失败 3活动结束参与成功
+	InviteCode      string    `gorm:"column:invite_code;type:varchar(36);unique;comment:邀请码;default:NULL;" json:"invite_code"`                    // 邀请码
 	CreatedAt       time.Time `gorm:"column:created_at;type:datetime(3);comment:参与时间;default:CURRENT_TIMESTAMP(3);" json:"created_at"`            // 参与时间
 	DeletedAt       time.Time `gorm:"column:deleted_at;type:datetime(3);comment:是否取消;default:NULL;" json:"deleted_at"`                            // 是否取消
 }
@@ -36,4 +37,9 @@ func (b *BargainUser) FindBargainUserId(id int) (result *BargainUser, err error)
 }
 func (b *BargainUser) UpdateBargainStatus(id int, status int) error {
 	return global.DB.Model(&BargainUser{}).Where("id = ?", id).Update("status", status).Error
+}
+
+func (b *BargainUser) FindBargainUserCode(code string) (result *BargainUser, err error) {
+	err = global.DB.Where("invite_code =?", code).Find(&result).Error
+	return result, err
 }

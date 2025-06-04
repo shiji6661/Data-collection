@@ -1,6 +1,7 @@
 package dao_mysql
 
 import (
+	"Data-collection/way/groupBuyingProduct"
 	"common/global"
 	"errors"
 	"fmt"
@@ -8,7 +9,6 @@ import (
 	"gorm.io/gorm"
 	"models/model_product/model_mysql"
 	"product_srv/proto_product/product"
-	"way/groupBuyingProduct"
 )
 
 func JoinGroupBuying(in *product.UserJoinGroupRequest, invitationCode string) (gb *model_mysql.GroupBuying, err error) {

@@ -1,6 +1,7 @@
 package dao_mysql
 
 import (
+	"Data-collection/way/user"
 	"common/global"
 	"context"
 	"errors"
@@ -9,7 +10,6 @@ import (
 	"order_srv/dao/dao_redis"
 	"strconv"
 	"time"
-	"way/user"
 )
 
 const (

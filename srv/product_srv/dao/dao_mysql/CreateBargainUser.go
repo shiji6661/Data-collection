@@ -3,6 +3,7 @@ package dao_mysql
 import (
 	"errors"
 	"fmt"
+	"github.com/google/uuid"
 	"models/model_product/model_mysql"
 	"product_srv/proto_product/product"
 )
@@ -25,6 +26,13 @@ func CreateBargainUser(in *product.CreateBargainUserRequest) (result *model_mysq
 		BargainPrice:    bar.Price,
 		Price:           bar.Price,
 	}
+
+	uuidObj, err := uuid.NewRandom()
+	if err != nil {
+		return nil, errors.New("生成邀请码失败")
+	}
+	result.InviteCode = uuidObj.String()
+
 	err = result.CreateBargainUser()
 	if err != nil {
 		return nil, errors.New("添加砍价失败")

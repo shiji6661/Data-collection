@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// 商家添加砍价商品
 func CreateBargainProduct(in *product.CreateBargainProductRequest) (*product.CreateBargainProductResponse, error) {
 	nowTime := time.Now().String()
 	if in.StartTime > in.StopTime {

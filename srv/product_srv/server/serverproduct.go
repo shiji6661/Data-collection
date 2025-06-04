@@ -208,3 +208,21 @@ func (s ServerProduct) UserJoinGroup(ctx context.Context, in *product.UserJoinGr
 	}
 	return sale, err
 }
+
+// todo 将商品信息写入ES
+func (s ServerProduct) ProductCreateToES(ctx context.Context, in *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
+	es, err := logic.ProductCreateToES(in)
+	if err != nil {
+		return nil, err
+	}
+	return es, err
+}
+
+// todo 查询ES中的商品信息
+func (s ServerProduct) ProductSearchES(ctx context.Context, in *product.ProductSearchESRequest) (*product.ProductSearchESResponse, error) {
+	es, err := logic.ProductSearchToEs(in)
+	if err != nil {
+		return nil, err
+	}
+	return es, nil
+}

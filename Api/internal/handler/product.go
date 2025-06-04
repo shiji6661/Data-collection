@@ -346,3 +346,33 @@ func UserJoinGroup(ctx context.Context, i *product.UserJoinGroupRequest) (*produ
 	}
 	return productClient.(*product.UserJoinGroupResponse), nil
 }
+
+// todo 将商品信息写入es
+func ProductCreateToEs(ctx context.Context, i *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		es, err := in.ProductCreateToES(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return es, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.ProductCreateToESResponse), nil
+}
+
+// todo 查询es中的商品信息
+func ProductSearchToEs(ctx context.Context, i *product.ProductSearchESRequest) (*product.ProductSearchESResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		es, err := in.ProductSearchES(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return es, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.ProductSearchESResponse), nil
+}

@@ -272,6 +272,7 @@ func CreateBargainUserHelp(c *gin.Context) {
 		Uid:           uint32(id),
 		BargainId:     uint32(data.BargainId),
 		BargainUserId: uint32(data.BargainUserId),
+		InviteCode:    data.InviteCode,
 	})
 	if err != nil {
 		response.ResponseError(c, err.Error())
@@ -450,4 +451,36 @@ func UserJoinGroup(c *gin.Context) {
 		return
 	}
 	response.ResponseSuccess(c, joinGroup)
+}
+
+// todo 商品信息写入es
+func ProductCreateToEs(c *gin.Context) {
+	var data request.ToEs
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	es, err := handler.ProductCreateToEs(c, &product.ProductCreateToESRequest{
+		Table: data.TableName,
+	})
+	if err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, es)
+}
+
+// todo 查询es中的商品信息
+func ProductSearchToEs(c *gin.Context) {
+	var data request.SearchToEs
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	es, err := handler.ProductSearchToEs(c, &product.ProductSearchESRequest{Name: data.Name})
+	if err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, es)
 }

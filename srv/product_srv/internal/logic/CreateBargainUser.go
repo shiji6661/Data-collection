@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// 砍价
 func CreateBargainUser(in *product.CreateBargainUserRequest) (*product.CreateBargainUserResponse, error) {
 	s := model_mysql.Bargain{}
 	bar, err := s.FindBargainProductById(int(in.BargainId))
@@ -25,5 +26,8 @@ func CreateBargainUser(in *product.CreateBargainUserRequest) (*product.CreateBar
 	if err != nil {
 		return nil, errors.New("创建砍价失败")
 	}
-	return &product.CreateBargainUserResponse{Result: int64(user.Id)}, nil
+	return &product.CreateBargainUserResponse{
+		Result:  int64(user.Id),
+		Message: "砍价邀请码:" + user.InviteCode,
+	}, nil
 }

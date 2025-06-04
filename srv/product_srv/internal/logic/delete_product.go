@@ -1,11 +1,11 @@
 package logic
 
 import (
+	"Data-collection/way/merchant"
 	"errors"
 	"go.uber.org/zap"
 	"product_srv/dao/dao_mysql"
 	"product_srv/proto_product/product"
-	"way/merchant"
 )
 
 // 商家删除商品

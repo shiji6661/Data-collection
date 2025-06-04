@@ -89,8 +89,9 @@ type RemoveGroupProductRequest struct {
 
 // TODO:帮砍价
 type CreateBargainUserHelpRequest struct {
-	BargainId     int64 `json:"bargain_id" binding:"required"`
-	BargainUserId int64 `json:"bargain_user_id" binding:"required"`
+	BargainId     int64  `json:"bargain_id" binding:"required"`
+	BargainUserId int64  `json:"bargain_user_id" binding:"required"`
+	InviteCode    string `json:"invite_code" binding:"required"`
 }
 
 // TODO:删除商品
@@ -143,4 +144,12 @@ type UserJoinGroupRequest struct {
 	Cid            int64  `form:"cid" binding:"required"`
 	Num            int64  `form:"num" binding:"required"`
 	InvitationCode string `form:"invitation_code"`
+}
+
+type ToEs struct {
+	TableName string `json:"tableName" form:"tableName" binding:"required"`
+}
+
+type SearchToEs struct {
+	Name string `json:"name" form:"name"`
 }

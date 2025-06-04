@@ -5,6 +5,7 @@ import (
 	"user_srv/proto_user/user"
 )
 
+// 佣金排行榜
 func CommissionRank(in *user.CommissionListRequest) (*user.CommissionListResponse, error) {
 	u := model_mysql.User{}
 	if in.Page <= 0 {

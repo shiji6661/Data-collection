@@ -162,6 +162,7 @@ message CreateBargainUserRequest {
 
 message CreateBargainUserResponse {
   int64 result = 1;
+  string message = 2;
 }
 
 //todo:用户帮砍
@@ -204,10 +205,12 @@ message CreateBargainUserHelpRequest{
   uint32 Uid = 1;
   uint32 BargainId = 2;
   uint32 BargainUserId = 3;
+  string InviteCode = 4;
 }
 
 message CreateBargainUserHelpResponse{
   int64 result = 1;
+  string message = 2;
 }
 
 //todo 商家删除拼团商品
@@ -328,6 +331,24 @@ message UserJoinGroupResponse{
   string Url = 4;
 }
 
+// todo:将商品信息写入ES
+message ProductCreateToESRequest{
+  string table = 1;
+}
+
+message ProductCreateToESResponse{
+  bool Success = 1;
+}
+
+// todo:查询ES中的商品信息
+message ProductSearchESRequest{
+  string name = 1;
+}
+
+message ProductSearchESResponse{
+  repeated NewProductList List = 1;
+}
+
 service Product {
   rpc ProductInfo(ProductInfoRequest) returns(ProductInfoResponse);//todo:商品详情
 
@@ -372,6 +393,10 @@ service Product {
   rpc FlashSale(FlashSaleRequest) returns(FlashSaleResponse); // todo 秒杀中
 
   rpc UserJoinGroup(UserJoinGroupRequest) returns(UserJoinGroupResponse); // todo 用户加入拼团
+
+  rpc ProductCreateToES(ProductCreateToESRequest) returns(ProductCreateToESResponse); // todo 将商品信息写入ES
+
+  rpc ProductSearchES(ProductSearchESRequest) returns(ProductSearchESResponse); // todo 查询ES中的商品信息
 
 }
 

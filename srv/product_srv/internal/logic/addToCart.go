@@ -1,6 +1,8 @@
 package logic
 
 import (
+	pro "Data-collection/way/product"
+	"Data-collection/way/user"
 	"common/global"
 	"context"
 	"errors"
@@ -9,8 +11,6 @@ import (
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
 	"strconv"
-	pro "way/product"
-	"way/user"
 )
 
 func AddToCart(in *product.AddToCartRequest) (*product.AddToCartResponse, error) {

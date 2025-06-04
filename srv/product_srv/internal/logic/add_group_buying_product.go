@@ -1,6 +1,7 @@
 package logic
 
 import (
+	"Data-collection/way/merchant"
 	"context"
 	"errors"
 	"fmt"
@@ -8,7 +9,6 @@ import (
 	"product_srv/dao/dao_mysql"
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
-	"way/merchant"
 )
 
 // 创建拼团商品

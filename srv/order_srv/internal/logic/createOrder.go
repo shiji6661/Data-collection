@@ -1,6 +1,8 @@
 package logic
 
 import (
+	"Data-collection/way/product"
+	"Data-collection/way/user"
 	"errors"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
@@ -9,9 +11,6 @@ import (
 	"order_srv/proto_order/order"
 
 	"strconv"
-
-	"way/product"
-	"way/user"
 )
 
 func CreateOrder(in *order.CreateOrderRequest) (*order.CreateOrderResponse, error) {

@@ -1,6 +1,7 @@
 package dao_mysql
 
 import (
+	"Data-collection/way/groupBuyingProduct"
 	"common/global"
 	"errors"
 	"fmt"
@@ -10,7 +11,6 @@ import (
 	"models/model_product/model_mysql"
 	"product_srv/proto_product/product"
 	"time"
-	"way/groupBuyingProduct"
 )
 
 const (
