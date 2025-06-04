@@ -43,3 +43,11 @@ func (gb *GroupBuying) FindGroupBuyingById(cid int64) error {
 func (gb *GroupBuying) FindGroupBuyingByUidAndCid(uid, cid int64) error {
 	return global.DB.Where("uid =? and cid =?", uid, cid).Limit(1).Find(&gb).Error
 }
+
+func (gb *GroupBuying) UpdateGroupBuyingStatus(cid int64, status int) error {
+	err := global.DB.Model(&GroupBuying{}).Where("cid = ?", cid).Update("status", status).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}

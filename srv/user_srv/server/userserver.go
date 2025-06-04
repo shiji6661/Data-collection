@@ -26,7 +26,6 @@ func (s ServerUser) UserRegister(ctx context.Context, in *user.UserRegisterReque
 }
 
 // todo 用户登录
-
 func (s ServerUser) UserLogin(ctx context.Context, in *user.UserLoginRequest) (*user.UserLoginResponse, error) {
 	login, err := logic.UserLogin(in)
 	if err != nil {
@@ -36,7 +35,6 @@ func (s ServerUser) UserLogin(ctx context.Context, in *user.UserLoginRequest) (*
 }
 
 // todo 短信发送
-
 func (s ServerUser) SendSms(ctx context.Context, in *user.SendSmsRequest) (*user.SendSmsResponse, error) {
 	if in.Mobile == "" || in.Source == "" {
 		return nil, errors.New("手机号或验证码来源为空")

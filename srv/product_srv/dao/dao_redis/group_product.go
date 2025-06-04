@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	ProductStockPrefix = "product:product_id:%d"
+	ProductStockPrefix = "Product_Stock:Product_id_%d"
 )
 
 // SyncProductToRedis 同步商品库存

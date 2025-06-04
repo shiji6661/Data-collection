@@ -8,7 +8,7 @@ import (
 func ZapInit() {
 	config := zap.NewDevelopmentConfig()
 	config.OutputPaths = []string{
-		"./Zap/zap.log",
+		"./zap.log",
 		"stdout",
 	}
 	logger, err := config.Build()

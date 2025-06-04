@@ -31,9 +31,17 @@ func LoadProduct(r *gin.Engine) {
 
 		product.POST("/category", trigger.ProductCategory) //todo:商品分类查询
 
-		product.POST("/add/cart", trigger.AddToCart) //todo:添加购物车
+		//product.POST("/add/cart", trigger.AddToCart) //todo:添加购物车
 
 		product.POST("/cart/total/price", trigger.CartTotalPrice) //todo:购物车计算总价
+
+		product.POST("/add/carts", trigger.AddCart)                   //todo:商品添加至购物车
+		product.DELETE("/remove/cart", trigger.DeleteProductFromCart) //todo:移除购物车中商品
+		product.PUT("/update/cart", trigger.UpdateProductCart)        //todo:修改购物车中商品的数量
+		product.DELETE("/clear/cart", trigger.ClearCart)              //todo:清空购物车
+		product.GET("/cart/list", trigger.CartProductList)            //todo:购物车列表展示
+		product.GET("/cart/count", trigger.CartProductCount)          //todo:购物车中商品总数量
+		product.GET("/cart/price", trigger.CartProductTotalPrice)     //todo:购物车中商品总价
 
 		product.POST("/createBargainUserHelp", trigger.CreateBargainUserHelp) //todo:帮砍
 

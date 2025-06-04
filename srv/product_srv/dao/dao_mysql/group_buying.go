@@ -17,6 +17,8 @@ const (
 	IsTpl    = 0 // 是否发送模版消息："拼团成功！" 0未发送 1已发送
 	IsRefund = 0 // 是否退款 0 未退款 1已退款
 	Status   = 1 //拼团的状态 1进行中 2已完成 3未完成
+	OK       = 2 // 已完成
+	Fail     = 3 // 未完成
 )
 
 // todo:查询用户是否已经参加过该拼团
@@ -27,6 +29,13 @@ func FindGroupBuyingByUidAndCid(uid, cid int64) (gb *model_mysql.GroupBuying, er
 		return nil, err
 	}
 	return gb, nil
+}
+
+// todo:拼团完成之后，更新拼团状态
+func UpdateGroupBuyingStatus(cid int64, status int) error {
+	gb := &model_mysql.GroupBuying{}
+	gb.UpdateGroupBuyingStatus(cid, status)
+	return nil
 }
 
 // GenerateGroupUUID 生成拼团唯一标识
@@ -148,6 +157,7 @@ func CreateGroupBuying(in *product.CreateUserGroupRequest) (gb *model_mysql.Grou
 	if updatedGroup.People < id.People {
 		zap.L().Info("当前拼团人数不足！可以分享给更多好友！")
 	} else {
+		UpdateGroupBuyingStatus(in.Cid, OK)
 		// 拼团已满，可添加拼团成功逻辑
 		zap.L().Info("拼团已满！恭喜成功组团！")
 	}

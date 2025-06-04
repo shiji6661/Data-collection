@@ -118,3 +118,12 @@ func (p *Product) ProductList() ([]*Product, error) {
 	}
 	return products, nil
 }
+
+// TODO: 查询商品根据商品id
+func FindProductById(productId int64) (p *Product, err error) {
+	err = global.DB.Raw("select * from product where id=? limit 1", productId).Scan(&p).Error
+	if err != nil {
+		return nil, err
+	}
+	return p, nil
+}

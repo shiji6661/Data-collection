@@ -31,12 +31,6 @@ type ProductCategory struct {
 	CateId string `form:"CateId" json:"CateId" binding:"required"`
 }
 
-// TODO: 添加购物车
-type AddToCart struct {
-	ProductId int64 `form:"productId" json:"productId" binding:"required"`
-	Num       int64 `form:"num" json:"num" binding:"required"`
-}
-
 type CreateBargainProductRequest struct {
 	ProductId       int64   `json:"product_id" binding:"required"`
 	Title           string  `json:"title" binding:"required"`
@@ -140,7 +134,48 @@ type FlashSale struct {
 
 // TODO:用户参与拼团
 type UserJoinGroupRequest struct {
+	UserId         int64  `form:"user_id"`
 	Cid            int64  `form:"cid" binding:"required"`
 	Num            int64  `form:"num" binding:"required"`
 	InvitationCode string `form:"invitation_code"`
+}
+
+// TODO: 添加购物车
+type AddCartRequest struct {
+	UserId    int `form:"user_id" json:"user_id"`
+	ProductId int `form:"product_id" json:"product_id"` // binding:"required"
+	Num       int `form:"num" json:"num" binding:"required"`
+}
+
+// TODO: 移除购物车中商品
+type RemoveFromCartRequest struct {
+	UserId    int `form:"user_id" json:"user_id"`
+	ProductId int `form:"product_id" json:"product_id" binding:"required"`
+}
+
+// TODO: 购物车商品数量修改
+type UpdateCartRequest struct {
+	UserId    int `form:"user_id" json:"user_id"`
+	ProductId int `form:"product_id" json:"product_id" binding:"required"`
+	Num       int `form:"num" json:"num" binding:"required"`
+}
+
+// TODO:清空购物车
+type ClearCart struct {
+	UserId int `form:"user_id" json:"user_id"`
+}
+
+// TODO:购物车商品列表
+type CartProductList struct {
+	UserId int `form:"user_id" json:"user_id"`
+}
+
+// TODO: 购物车商品总数量
+type CartProductCount struct {
+	UserId int `form:"user_id" json:"user_id"`
+}
+
+// TODO: 购物车商品总价
+type CartProductTotalPrice struct {
+	UserId int `form:"user_id" json:"user_id"`
 }

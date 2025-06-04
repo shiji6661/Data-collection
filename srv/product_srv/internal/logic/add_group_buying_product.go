@@ -8,6 +8,7 @@ import (
 	"product_srv/dao/dao_mysql"
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
+
 	"way/merchant"
 )
 

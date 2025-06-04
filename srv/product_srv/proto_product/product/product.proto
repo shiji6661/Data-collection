@@ -328,6 +328,77 @@ message UserJoinGroupResponse{
   string Url = 4;
 }
 
+//TODO: 添加购物车
+message AddCartRequest {
+  int64 UserId = 1;
+  int64 ProductId = 2;
+  int64 Num = 3;
+}
+message AddCartResponse {
+  string Success = 1;
+}
+
+// todo: 从购物车中移除某个商品
+message RemoveFromCartRequest{
+  int64 UserId = 1;
+  int64 ProductId = 2;
+  string CartId = 3;
+}
+
+message RemoveFromCartResponse{
+  string Success = 1;
+}
+
+// todo: 修改购物车中某个商品的数量
+message UpdateCartRequest{
+  int64 UserId = 1;
+  int64 ProductId = 2;
+  int64 Num = 3;
+}
+message UpdateCartResponse{
+  string Success = 1;
+}
+
+// todo: 清空购物车
+message ClearCartRequest{
+  int64 UserId = 1;
+}
+message ClearCartResponse{
+  string Success = 1;
+}
+
+// todo:购物车中商品列表
+message CartProductListRequest{
+  int64 UserId = 1;
+}
+message CartProductListResponse{
+  repeated ProductItems List = 1;
+}
+message ProductItems{
+  int64 UserId = 1;
+  int64 ProductId = 2;
+  int64 Num = 3;
+  float Price = 4;
+  string ProductName = 5;
+  int64 Check = 6;
+}
+
+// todo:统计购物车商品总数量
+message CartProductCountRequest{
+  int64 UserId = 1;
+}
+message CartProductCountResponse{
+  int64 Total = 1;
+}
+
+// todo: 计算购物车中商品的总价
+message CartProductTotalPriceRequest{
+  int64 UserId =1;
+}
+message CartProductTotalPriceResponse{
+  float TotalPrice = 1;
+}
+
 service Product {
   rpc ProductInfo(ProductInfoRequest) returns(ProductInfoResponse);//todo:商品详情
 
@@ -372,6 +443,21 @@ service Product {
   rpc FlashSale(FlashSaleRequest) returns(FlashSaleResponse); // todo 秒杀中
 
   rpc UserJoinGroup(UserJoinGroupRequest) returns(UserJoinGroupResponse); // todo 用户加入拼团
+
+  //购物车模块
+  rpc AddCart(AddCartRequest) returns(AddCartResponse);//todo:添加购物车
+
+  rpc RemoveFromCart(RemoveFromCartRequest) returns(RemoveFromCartResponse);//todo:从购物车中移除某个商品
+
+  rpc UpdateCart(UpdateCartRequest) returns(UpdateCartResponse);//todo:修改购物车中某个商品的数量
+
+  rpc ClearCart(ClearCartRequest) returns(ClearCartResponse);//todo:清空购物车
+
+  rpc CartProductList(CartProductListRequest) returns(CartProductListResponse);//todo:购物车中商品列表
+
+  rpc CartProductCount(CartProductCountRequest) returns(CartProductCountResponse);//todo:统计购物车商品总数量
+
+  rpc CartProductTotalPrice(CartProductTotalPriceRequest) returns(CartProductTotalPriceResponse);//todo:统计购物车商品总价格
 
 }
 

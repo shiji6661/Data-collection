@@ -10,9 +10,10 @@ import (
 	"way/user"
 )
 
-// todo 购物车计算总价
-func CartTotalPrice(in *product.CartTotalPriceRequest) (*product.CartTotalPriceResponse, error) {
+// TODO: 购物车中商品总价
+func CartProductTotalPrice(in *product.CartProductTotalPriceRequest) (*product.CartProductTotalPriceResponse, error) {
 	// 判断用户是否存在
+
 	info, err := user.CommonGetUserIdInfo(in.UserId)
 	if err != nil {
 		return nil, err
@@ -22,11 +23,8 @@ func CartTotalPrice(in *product.CartTotalPriceRequest) (*product.CartTotalPriceR
 	}
 	cartId, err := dao_redis.GetCartIdByUserId(context.Background(), strconv.Itoa(int(in.UserId)))
 	if err != nil {
-		return nil, errors.New("购物车ID查询失败")
+		return nil, err
 	}
-
 	price := dao_redis.CartProductTotalPrice(context.Background(), cartId, in.UserId)
-	return &product.CartTotalPriceResponse{
-		TotalPrice: float32(price),
-	}, nil
+	return &product.CartProductTotalPriceResponse{TotalPrice: float32(price)}, nil
 }

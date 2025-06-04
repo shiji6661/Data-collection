@@ -8,7 +8,6 @@ import (
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"kuteng-RabbitMQ/SimlpePublish"
-
 	"models/model_product/model_mysql"
 	"order_srv/pkg"
 	"product_srv/dao/dao_mysql"

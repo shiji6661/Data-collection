@@ -23,7 +23,7 @@ func ProductInfo(c *gin.Context) {
 		response.ResponseError(c, err.Error())
 		return
 	}
-	response.ResponseSuccess(c, ProductInfos.List)
+	response.ResponseSuccess(c, ProductInfos)
 }
 
 // todo:商品推荐
@@ -34,7 +34,7 @@ func ProductRecommend(c *gin.Context) {
 		response.ResponseError(c, err.Error())
 		return
 	}
-	response.ResponseSuccess(c, ProductInfos.List)
+	response.ResponseSuccess(c, ProductInfos)
 }
 
 // todo:商品关键字查询
@@ -51,7 +51,7 @@ func ProductKeyword(c *gin.Context) {
 		response.ResponseError(c, err.Error())
 		return
 	}
-	response.ResponseSuccess(c, ProductInfos.List)
+	response.ResponseSuccess(c, ProductInfos)
 }
 
 // todo:商品筛选
@@ -79,7 +79,7 @@ func ProductFilter(c *gin.Context) {
 		response.ResponseError(c, err.Error())
 		return
 	}
-	response.ResponseSuccess(c, ProductInfos.List)
+	response.ResponseSuccess(c, ProductInfos)
 }
 
 // todo:商品分类查询
@@ -96,31 +96,31 @@ func ProductCategory(c *gin.Context) {
 		response.ResponseError(c, err.Error())
 		return
 	}
-	response.ResponseSuccess(c, ProductInfos.List)
+	response.ResponseSuccess(c, ProductInfos)
 }
 
-// todo:添加购物车
-func AddToCart(c *gin.Context) {
-	var data request.AddToCart
-	if err := c.ShouldBind(&data); err != nil {
-		response.ResponseError(c, err.Error())
-		return
-	}
-
-	id := c.GetUint("userId")
-
-	ProductInfos, err := handler.AddToCart(c, &product.AddToCartRequest{
-		UserId:    int64(id),
-		ProductId: data.ProductId,
-		Num:       data.Num,
-	})
-	if err != nil {
-		response.ResponseError(c, err.Error())
-		return
-	}
-	response.ResponseSuccess(c, ProductInfos.Success)
-
-}
+//// todo:添加购物车
+//func AddToCart(c *gin.Context) {
+//	var data request.AddToCart
+//	if err := c.ShouldBind(&data); err != nil {
+//		response.ResponseError(c, err.Error())
+//		return
+//	}
+//
+//	id := c.GetUint("userId")
+//
+//	ProductInfos, err := handler.AddToCart(c, &product.AddToCartRequest{
+//		UserId:    int64(id),
+//		ProductId: data.ProductId,
+//		Num:       data.Num,
+//	})
+//	if err != nil {
+//		response.ResponseError(c, err.Error())
+//		return
+//	}
+//	response.ResponseSuccess(c, ProductInfos.Success)
+//
+//}
 
 func CreateBargainProduct(c *gin.Context) {
 	var data request.CreateBargainProductRequest
@@ -433,14 +433,14 @@ func FlashSale(c *gin.Context) {
 
 // TODO:用户加入拼团
 func UserJoinGroup(c *gin.Context) {
-	userid := c.GetUint("userId")
+	//userid := c.GetUint("userId")
 	var data request.UserJoinGroupRequest
 	if err := c.ShouldBind(&data); err != nil {
 		response.ResponseError400(c, err.Error())
 		return
 	}
 	joinGroup, err := handler.UserJoinGroup(c, &product.UserJoinGroupRequest{
-		Uid:            int64(userid),
+		Uid:            data.UserId,
 		Cid:            data.Cid,
 		Num:            data.Num,
 		InvitationCode: data.InvitationCode,
@@ -450,4 +450,131 @@ func UserJoinGroup(c *gin.Context) {
 		return
 	}
 	response.ResponseSuccess(c, joinGroup)
+}
+
+// todo:商品添加至购物车
+func AddCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	fmt.Println(userId)
+	var data request.AddCartRequest
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	cart, err := handler.AddCart(c, &product.AddCartRequest{
+		UserId:    int64(userId),
+		ProductId: int64(data.ProductId),
+		Num:       int64(data.Num),
+	})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, cart.Success)
+}
+
+// todo: 移除购物车中商品
+func DeleteProductFromCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.RemoveFromCartRequest
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+
+	cart, err := handler.DeleteProductFromCart(c, &product.RemoveFromCartRequest{
+		UserId:    int64(userId),
+		ProductId: int64(data.ProductId),
+	})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, cart.Success)
+}
+
+// todo: 购物车商品数量修改
+func UpdateProductCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.UpdateCartRequest
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	cart, err := handler.UpdateProductCart(c, &product.UpdateCartRequest{
+		UserId:    int64(userId),
+		ProductId: int64(data.ProductId),
+		Num:       int64(data.Num),
+	})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, cart)
+}
+
+// todo: 清空购物车
+func ClearCart(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.ClearCart
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+
+	cart, err := handler.ClearCart(c, &product.ClearCartRequest{UserId: int64(userId)})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, cart)
+}
+
+// todo: 购物车商品列表
+func CartProductList(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.CartProductList
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+
+	list, err := handler.CartProductList(c, &product.CartProductListRequest{UserId: int64(userId)})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, list)
+}
+
+// todo: 购物车商品总数量
+func CartProductCount(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.CartProductCount
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	count, err := handler.CartProductCount(c, &product.CartProductCountRequest{UserId: int64(userId)})
+	if err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, count)
+}
+
+// todo:购物车商品总价
+func CartProductTotalPrice(c *gin.Context) {
+	userId := c.GetUint("userId")
+	var data request.CartProductTotalPrice
+	if err := c.ShouldBind(&data); err != nil {
+		response.ResponseError(c, err.Error())
+		return
+	}
+	price, err := handler.CartProductTotalPrice(c, &product.CartProductTotalPriceRequest{UserId: int64(userId)})
+	if err != nil {
+		response.ResponseError400(c, err.Error())
+		return
+	}
+	response.ResponseSuccess(c, price)
 }
