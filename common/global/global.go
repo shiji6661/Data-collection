@@ -43,3 +43,19 @@ const (
 	MAX_MEMBER_LEVEL       = 5    // 最高会员等级
 	POINTS_PER_LEVEL       = 2000 // 每级所需积分
 )
+
+const MANAGE_ID = 1
+
+const (
+	DATABASE            = "mqtt"     //TODO: 数据库名称
+	PRIVATE             = "private"  //TODO: 私有主题
+	MESSAGES_COLLECTION = "messages" //TODO: 数据采集表
+)
+
+const (
+	BROKER    = "mqtt://14.103.140.6:1883"
+	TOPIC     = "client"
+	QOS       = 1 // 消息质量
+	USER_NAME = "test"
+	PASSWORD  = "1gzrhhsc5YDHR"
+)

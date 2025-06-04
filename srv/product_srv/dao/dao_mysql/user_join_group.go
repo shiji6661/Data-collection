@@ -11,6 +11,7 @@ import (
 	"product_srv/proto_product/product"
 )
 
+// todo 用户加入拼团
 func JoinGroupBuying(in *product.UserJoinGroupRequest, invitationCode string) (gb *model_mysql.GroupBuying, err error) {
 	// 查找拼团商品信息
 	id, err := FindGProductById(in.Cid)
@@ -41,7 +42,7 @@ func JoinGroupBuying(in *product.UserJoinGroupRequest, invitationCode string) (g
 	// 查看拼团的人数是否已满
 	if cidGroup.People >= id.People {
 		zap.L().Info("拼团人数已满！请另外寻找拼团！")
-		return nil, errors.New("拼团人数已满！请另外寻找拼团！")
+		return nil, errors.New("拼团人数已满！拼团已结束！")
 	}
 
 	// 判断邀请码是否有效
@@ -118,6 +119,8 @@ func JoinGroupBuying(in *product.UserJoinGroupRequest, invitationCode string) (g
 	} else {
 		// 拼团已满，可添加拼团成功逻辑
 		zap.L().Info("拼团已满！恭喜成功组团！")
+		UpdateGroupBuyingStatus(in.Cid, Status)
+
 	}
 
 	return gb, nil

@@ -9,6 +9,11 @@ import (
 	"product_srv/dao/dao_mysql"
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
+<<<<<<< HEAD
+=======
+
+	"way/merchant"
+>>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 )
 
 // 创建拼团商品

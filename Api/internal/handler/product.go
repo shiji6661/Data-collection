@@ -347,6 +347,7 @@ func UserJoinGroup(ctx context.Context, i *product.UserJoinGroupRequest) (*produ
 	return productClient.(*product.UserJoinGroupResponse), nil
 }
 
+<<<<<<< HEAD
 // todo 将商品信息写入es
 func ProductCreateToEs(ctx context.Context, i *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
 	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
@@ -355,10 +356,21 @@ func ProductCreateToEs(ctx context.Context, i *product.ProductCreateToESRequest)
 			return nil, err
 		}
 		return es, nil
+=======
+// todo:商品添加至购物车
+func AddCart(ctx context.Context, i *product.AddCartRequest) (*product.AddCartResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		cart, err := in.AddCart(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return cart, nil
+>>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	})
 	if err != nil {
 		return nil, err
 	}
+<<<<<<< HEAD
 	return productClient.(*product.ProductCreateToESResponse), nil
 }
 
@@ -370,9 +382,105 @@ func ProductSearchToEs(ctx context.Context, i *product.ProductSearchESRequest) (
 			return nil, err
 		}
 		return es, nil
+=======
+	return productClient.(*product.AddCartResponse), nil
+}
+
+// TODO: 移除购物车中商品
+func DeleteProductFromCart(ctx context.Context, i *product.RemoveFromCartRequest) (*product.RemoveFromCartResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		cart, err := in.RemoveFromCart(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return cart, nil
+>>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	})
 	if err != nil {
 		return nil, err
 	}
+<<<<<<< HEAD
 	return productClient.(*product.ProductSearchESResponse), nil
+=======
+	return productClient.(*product.RemoveFromCartResponse), nil
+}
+
+// TODO: 修改购物车中商品的数量
+func UpdateProductCart(ctx context.Context, i *product.UpdateCartRequest) (*product.UpdateCartResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		cart, err := in.UpdateCart(ctx, i)
+
+		if err != nil {
+			return nil, err
+		}
+		return cart, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return productClient.(*product.UpdateCartResponse), nil
+}
+
+// TODO: 清空购物车
+func ClearCart(ctx context.Context, i *product.ClearCartRequest) (*product.ClearCartResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		cart, err := in.ClearCart(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return cart, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.ClearCartResponse), nil
+}
+
+// TODO: 购物车商品列表
+func CartProductList(ctx context.Context, i *product.CartProductListRequest) (*product.CartProductListResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		list, err := in.CartProductList(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return list, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.CartProductListResponse), nil
+}
+
+// TODO：购物车中商品的总数量
+func CartProductCount(ctx context.Context, i *product.CartProductCountRequest) (*product.CartProductCountResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		count, err := in.CartProductCount(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return count, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.CartProductCountResponse), nil
+}
+
+// TODO: 购物车中商品总价
+func CartProductTotalPrice(ctx context.Context, i *product.CartProductTotalPriceRequest) (*product.CartProductTotalPriceResponse, error) {
+	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
+		price, err := in.CartProductTotalPrice(ctx, i)
+		if err != nil {
+			return nil, err
+		}
+		return price, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return productClient.(*product.CartProductTotalPriceResponse), nil
+
+>>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }

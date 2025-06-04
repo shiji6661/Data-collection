@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"errors"
 	"product_srv/internal/logic"
 	"product_srv/proto_product/product"
 )
@@ -209,6 +210,7 @@ func (s ServerProduct) UserJoinGroup(ctx context.Context, in *product.UserJoinGr
 	return sale, err
 }
 
+<<<<<<< HEAD
 // todo 将商品信息写入ES
 func (s ServerProduct) ProductCreateToES(ctx context.Context, in *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
 	es, err := logic.ProductCreateToES(in)
@@ -225,4 +227,74 @@ func (s ServerProduct) ProductSearchES(ctx context.Context, in *product.ProductS
 		return nil, err
 	}
 	return es, nil
+=======
+// todo:商品添加至购物车
+func (s ServerProduct) AddCart(ctx context.Context, in *product.AddCartRequest) (*product.AddCartResponse, error) {
+	if in.UserId == 0 || in.ProductId == 0 || in.Num == 0 {
+		return nil, errors.New("参数错误")
+	}
+	cart, err := logic.AddCart(in)
+	if err != nil {
+		return nil, err
+	}
+	return cart, nil
+
+}
+
+// todo:从购物车中移除商品
+func (s ServerProduct) RemoveFromCart(ctx context.Context, in *product.RemoveFromCartRequest) (*product.RemoveFromCartResponse, error) {
+	if in.UserId == 0 || in.ProductId == 0 {
+		return nil, errors.New("参数错误")
+	}
+	cart, err := logic.DeleteProductFromCart(in)
+	if err != nil {
+		return nil, err
+	}
+	return cart, nil
+}
+
+// todo: 修改购物车中商品的数量
+func (s ServerProduct) UpdateCart(ctx context.Context, in *product.UpdateCartRequest) (*product.UpdateCartResponse, error) {
+	cart, err := logic.UpdateProductCart(in)
+	if err != nil {
+		return nil, err
+	}
+	return cart, nil
+}
+
+// todo: 清空购物车
+func (s ServerProduct) ClearCart(ctx context.Context, in *product.ClearCartRequest) (*product.ClearCartResponse, error) {
+	cart, err := logic.ClearProductCart(in)
+	if err != nil {
+		return nil, err
+	}
+	return cart, nil
+}
+
+// todo: 购物车商品列表
+func (s ServerProduct) CartProductList(ctx context.Context, in *product.CartProductListRequest) (*product.CartProductListResponse, error) {
+	list, err := logic.ProductCartList(in)
+	if err != nil {
+		return nil, err
+	}
+	return list, nil
+}
+
+// todo:购物车中商品的总数量
+func (s ServerProduct) CartProductCount(ctx context.Context, in *product.CartProductCountRequest) (*product.CartProductCountResponse, error) {
+	count, err := logic.CartProductCount(in)
+	if err != nil {
+		return nil, err
+	}
+	return count, nil
+}
+
+// todo:购物车中商品总价钱
+func (s ServerProduct) CartProductTotalPrice(ctx context.Context, in *product.CartProductTotalPriceRequest) (*product.CartProductTotalPriceResponse, error) {
+	price, err := logic.CartProductTotalPrice(in)
+	if err != nil {
+		return nil, err
+	}
+	return price, nil
+>>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }

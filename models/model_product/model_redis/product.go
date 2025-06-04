@@ -164,3 +164,21 @@ func SpikeRPop(productID int) error {
 	key := fmt.Sprintf("SpikeProduct:%d", productID)
 	return global.Rdb.RPop(context.Background(), key).Err()
 }
+
+// TODO: 移除redis中商品
+func RemoveCart(ctx context.Context, key string) error {
+	err := global.Rdb.Del(ctx, key).Err()
+	if err != nil {
+		return errors.New("移除失败！")
+	}
+	return nil
+}
+
+// TODO: 直接修改redis中商品数量
+func UpdateCart(ctx context.Context, key string, field string, num int64) error {
+	err := global.Rdb.HMSet(ctx, key, field, num).Err()
+	if err != nil {
+		return errors.New("修改失败！")
+	}
+	return nil
+}

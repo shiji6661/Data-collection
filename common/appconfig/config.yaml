@@ -4,3 +4,10 @@ NaCosAppFig:
   Port: 8848
   DataId: 2209a
   Group: dev
+
+MqttFig:
+  Broker: mqtt://14.103.140.6:1883
+  Topic: client
+  Qos: 1
+  UserName: test
+  Password: 1gzrhhsc5YDHR
