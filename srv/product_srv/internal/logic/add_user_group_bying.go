@@ -1,7 +1,6 @@
 package logic
 
 import (
-	"Data-collection/way/user"
 	"common/global"
 	user2 "common/utils/user"
 	"errors"
@@ -14,6 +13,7 @@ import (
 	"product_srv/dao/dao_mysql"
 	"product_srv/proto_product/product"
 	"strconv"
+	"way/user"
 )
 
 // todo:用户拼团

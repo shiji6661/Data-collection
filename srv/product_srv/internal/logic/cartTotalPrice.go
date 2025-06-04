@@ -1,11 +1,11 @@
 package logic
 
 import (
-	"Data-collection/way/user"
 	"context"
 	"errors"
 	"product_srv/dao/dao_redis"
 	"product_srv/proto_product/product"
+	"way/user"
 
 	"strconv"
 )

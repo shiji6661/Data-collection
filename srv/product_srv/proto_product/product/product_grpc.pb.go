@@ -41,10 +41,8 @@ const (
 	Product_AddSpikeProduct_FullMethodName       = "/product.Product/AddSpikeProduct"
 	Product_FlashSale_FullMethodName             = "/product.Product/FlashSale"
 	Product_UserJoinGroup_FullMethodName         = "/product.Product/UserJoinGroup"
-<<<<<<< HEAD
 	Product_ProductCreateToES_FullMethodName     = "/product.Product/ProductCreateToES"
 	Product_ProductSearchES_FullMethodName       = "/product.Product/ProductSearchES"
-=======
 	Product_AddCart_FullMethodName               = "/product.Product/AddCart"
 	Product_RemoveFromCart_FullMethodName        = "/product.Product/RemoveFromCart"
 	Product_UpdateCart_FullMethodName            = "/product.Product/UpdateCart"
@@ -52,7 +50,6 @@ const (
 	Product_CartProductList_FullMethodName       = "/product.Product/CartProductList"
 	Product_CartProductCount_FullMethodName      = "/product.Product/CartProductCount"
 	Product_CartProductTotalPrice_FullMethodName = "/product.Product/CartProductTotalPrice"
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 )
 
 // ProductClient is the client API for Product service.
@@ -81,10 +78,8 @@ type ProductClient interface {
 	AddSpikeProduct(ctx context.Context, in *AddSpikeProductRequest, opts ...grpc.CallOption) (*AddSpikeProductResponse, error)
 	FlashSale(ctx context.Context, in *FlashSaleRequest, opts ...grpc.CallOption) (*FlashSaleResponse, error)
 	UserJoinGroup(ctx context.Context, in *UserJoinGroupRequest, opts ...grpc.CallOption) (*UserJoinGroupResponse, error)
-<<<<<<< HEAD
 	ProductCreateToES(ctx context.Context, in *ProductCreateToESRequest, opts ...grpc.CallOption) (*ProductCreateToESResponse, error)
 	ProductSearchES(ctx context.Context, in *ProductSearchESRequest, opts ...grpc.CallOption) (*ProductSearchESResponse, error)
-=======
 	// 购物车模块
 	AddCart(ctx context.Context, in *AddCartRequest, opts ...grpc.CallOption) (*AddCartResponse, error)
 	RemoveFromCart(ctx context.Context, in *RemoveFromCartRequest, opts ...grpc.CallOption) (*RemoveFromCartResponse, error)
@@ -93,7 +88,6 @@ type ProductClient interface {
 	CartProductList(ctx context.Context, in *CartProductListRequest, opts ...grpc.CallOption) (*CartProductListResponse, error)
 	CartProductCount(ctx context.Context, in *CartProductCountRequest, opts ...grpc.CallOption) (*CartProductCountResponse, error)
 	CartProductTotalPrice(ctx context.Context, in *CartProductTotalPriceRequest, opts ...grpc.CallOption) (*CartProductTotalPriceResponse, error)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }
 
 type productClient struct {
@@ -324,29 +318,36 @@ func (c *productClient) UserJoinGroup(ctx context.Context, in *UserJoinGroupRequ
 	return out, nil
 }
 
-<<<<<<< HEAD
 func (c *productClient) ProductCreateToES(ctx context.Context, in *ProductCreateToESRequest, opts ...grpc.CallOption) (*ProductCreateToESResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductCreateToESResponse)
 	err := c.cc.Invoke(ctx, Product_ProductCreateToES_FullMethodName, in, out, cOpts...)
-=======
-func (c *productClient) AddCart(ctx context.Context, in *AddCartRequest, opts ...grpc.CallOption) (*AddCartResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddCartResponse)
-	err := c.cc.Invoke(ctx, Product_AddCart_FullMethodName, in, out, cOpts...)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-<<<<<<< HEAD
 func (c *productClient) ProductSearchES(ctx context.Context, in *ProductSearchESRequest, opts ...grpc.CallOption) (*ProductSearchESResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ProductSearchESResponse)
 	err := c.cc.Invoke(ctx, Product_ProductSearchES_FullMethodName, in, out, cOpts...)
-=======
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *productClient) AddCart(ctx context.Context, in *AddCartRequest, opts ...grpc.CallOption) (*AddCartResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddCartResponse)
+	err := c.cc.Invoke(ctx, Product_AddCart_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *productClient) RemoveFromCart(ctx context.Context, in *RemoveFromCartRequest, opts ...grpc.CallOption) (*RemoveFromCartResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RemoveFromCartResponse)
@@ -401,7 +402,6 @@ func (c *productClient) CartProductTotalPrice(ctx context.Context, in *CartProdu
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CartProductTotalPriceResponse)
 	err := c.cc.Invoke(ctx, Product_CartProductTotalPrice_FullMethodName, in, out, cOpts...)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err != nil {
 		return nil, err
 	}
@@ -434,10 +434,8 @@ type ProductServer interface {
 	AddSpikeProduct(context.Context, *AddSpikeProductRequest) (*AddSpikeProductResponse, error)
 	FlashSale(context.Context, *FlashSaleRequest) (*FlashSaleResponse, error)
 	UserJoinGroup(context.Context, *UserJoinGroupRequest) (*UserJoinGroupResponse, error)
-<<<<<<< HEAD
 	ProductCreateToES(context.Context, *ProductCreateToESRequest) (*ProductCreateToESResponse, error)
 	ProductSearchES(context.Context, *ProductSearchESRequest) (*ProductSearchESResponse, error)
-=======
 	// 购物车模块
 	AddCart(context.Context, *AddCartRequest) (*AddCartResponse, error)
 	RemoveFromCart(context.Context, *RemoveFromCartRequest) (*RemoveFromCartResponse, error)
@@ -446,7 +444,6 @@ type ProductServer interface {
 	CartProductList(context.Context, *CartProductListRequest) (*CartProductListResponse, error)
 	CartProductCount(context.Context, *CartProductCountRequest) (*CartProductCountResponse, error)
 	CartProductTotalPrice(context.Context, *CartProductTotalPriceRequest) (*CartProductTotalPriceResponse, error)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	mustEmbedUnimplementedProductServer()
 }
 
@@ -523,13 +520,12 @@ func (UnimplementedProductServer) FlashSale(context.Context, *FlashSaleRequest) 
 func (UnimplementedProductServer) UserJoinGroup(context.Context, *UserJoinGroupRequest) (*UserJoinGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UserJoinGroup not implemented")
 }
-<<<<<<< HEAD
 func (UnimplementedProductServer) ProductCreateToES(context.Context, *ProductCreateToESRequest) (*ProductCreateToESResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProductCreateToES not implemented")
 }
 func (UnimplementedProductServer) ProductSearchES(context.Context, *ProductSearchESRequest) (*ProductSearchESResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ProductSearchES not implemented")
-=======
+}
 func (UnimplementedProductServer) AddCart(context.Context, *AddCartRequest) (*AddCartResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddCart not implemented")
 }
@@ -550,7 +546,6 @@ func (UnimplementedProductServer) CartProductCount(context.Context, *CartProduct
 }
 func (UnimplementedProductServer) CartProductTotalPrice(context.Context, *CartProductTotalPriceRequest) (*CartProductTotalPriceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CartProductTotalPrice not implemented")
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }
 func (UnimplementedProductServer) mustEmbedUnimplementedProductServer() {}
 func (UnimplementedProductServer) testEmbeddedByValue()                 {}
@@ -969,18 +964,12 @@ func _Product_UserJoinGroup_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-<<<<<<< HEAD
 func _Product_ProductCreateToES_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProductCreateToESRequest)
-=======
-func _Product_AddCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddCartRequest)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-<<<<<<< HEAD
 		return srv.(ProductServer).ProductCreateToES(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
@@ -989,32 +978,16 @@ func _Product_AddCart_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServer).ProductCreateToES(ctx, req.(*ProductCreateToESRequest))
-=======
-		return srv.(ProductServer).AddCart(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Product_AddCart_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServer).AddCart(ctx, req.(*AddCartRequest))
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-<<<<<<< HEAD
 func _Product_ProductSearchES_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ProductSearchESRequest)
-=======
-func _Product_RemoveFromCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RemoveFromCartRequest)
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-<<<<<<< HEAD
 		return srv.(ProductServer).ProductSearchES(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
@@ -1023,7 +996,34 @@ func _Product_RemoveFromCart_Handler(srv interface{}, ctx context.Context, dec f
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServer).ProductSearchES(ctx, req.(*ProductSearchESRequest))
-=======
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Product_AddCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCartRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServer).AddCart(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Product_AddCart_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServer).AddCart(ctx, req.(*AddCartRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Product_RemoveFromCart_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveFromCartRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
 		return srv.(ProductServer).RemoveFromCart(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
@@ -1122,7 +1122,6 @@ func _Product_CartProductTotalPrice_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProductServer).CartProductTotalPrice(ctx, req.(*CartProductTotalPriceRequest))
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1223,14 +1222,14 @@ var Product_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Product_UserJoinGroup_Handler,
 		},
 		{
-<<<<<<< HEAD
 			MethodName: "ProductCreateToES",
 			Handler:    _Product_ProductCreateToES_Handler,
 		},
 		{
 			MethodName: "ProductSearchES",
 			Handler:    _Product_ProductSearchES_Handler,
-=======
+		},
+		{
 			MethodName: "AddCart",
 			Handler:    _Product_AddCart_Handler,
 		},
@@ -1257,7 +1256,6 @@ var Product_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CartProductTotalPrice",
 			Handler:    _Product_CartProductTotalPrice_Handler,
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

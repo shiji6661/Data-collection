@@ -141,14 +141,14 @@ type UserJoinGroupRequest struct {
 	InvitationCode string `form:"invitation_code"`
 }
 
-<<<<<<< HEAD
 type ToEs struct {
 	TableName string `json:"tableName" form:"tableName" binding:"required"`
 }
 
 type SearchToEs struct {
 	Name string `json:"name" form:"name"`
-=======
+}
+
 // TODO: 添加购物车
 type AddCartRequest struct {
 	UserId    int `form:"user_id" json:"user_id"`
@@ -187,5 +187,4 @@ type CartProductCount struct {
 // TODO: 购物车商品总价
 type CartProductTotalPrice struct {
 	UserId int `form:"user_id" json:"user_id"`
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }

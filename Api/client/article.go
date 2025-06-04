@@ -1,8 +1,9 @@
 package client
 
 import (
+	"article_srv/proto_article/article"
 	"context"
-	"srv/article_srv/proto_article/article"
+	"google.golang.org/grpc"
 )
 
 type HandlerArticle func(ctx context.Context, in article.ArticleClient) (interface{}, error)

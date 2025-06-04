@@ -347,7 +347,6 @@ func UserJoinGroup(ctx context.Context, i *product.UserJoinGroupRequest) (*produ
 	return productClient.(*product.UserJoinGroupResponse), nil
 }
 
-<<<<<<< HEAD
 // todo 将商品信息写入es
 func ProductCreateToEs(ctx context.Context, i *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
 	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
@@ -356,7 +355,13 @@ func ProductCreateToEs(ctx context.Context, i *product.ProductCreateToESRequest)
 			return nil, err
 		}
 		return es, nil
-=======
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.ProductCreateToESResponse), nil
+}
+
 // todo:商品添加至购物车
 func AddCart(ctx context.Context, i *product.AddCartRequest) (*product.AddCartResponse, error) {
 	productClient, err := client.ProductClient(ctx, func(ctx context.Context, in product.ProductClient) (interface{}, error) {
@@ -365,13 +370,13 @@ func AddCart(ctx context.Context, i *product.AddCartRequest) (*product.AddCartRe
 			return nil, err
 		}
 		return cart, nil
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
+
 	})
 	if err != nil {
 		return nil, err
 	}
-<<<<<<< HEAD
-	return productClient.(*product.ProductCreateToESResponse), nil
+
+	return productClient.(*product.AddCartResponse), nil
 }
 
 // todo 查询es中的商品信息
@@ -382,8 +387,11 @@ func ProductSearchToEs(ctx context.Context, i *product.ProductSearchESRequest) (
 			return nil, err
 		}
 		return es, nil
-=======
-	return productClient.(*product.AddCartResponse), nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return productClient.(*product.ProductSearchESResponse), nil
 }
 
 // TODO: 移除购物车中商品
@@ -394,14 +402,11 @@ func DeleteProductFromCart(ctx context.Context, i *product.RemoveFromCartRequest
 			return nil, err
 		}
 		return cart, nil
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 	})
 	if err != nil {
 		return nil, err
 	}
-<<<<<<< HEAD
-	return productClient.(*product.ProductSearchESResponse), nil
-=======
+
 	return productClient.(*product.RemoveFromCartResponse), nil
 }
 
@@ -482,5 +487,4 @@ func CartProductTotalPrice(ctx context.Context, i *product.CartProductTotalPrice
 
 	return productClient.(*product.CartProductTotalPriceResponse), nil
 
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }

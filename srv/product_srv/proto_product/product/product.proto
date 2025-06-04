@@ -331,7 +331,6 @@ message UserJoinGroupResponse{
   string Url = 4;
 }
 
-<<<<<<< HEAD
 // todo:将商品信息写入ES
 message ProductCreateToESRequest{
   string table = 1;
@@ -348,7 +347,7 @@ message ProductSearchESRequest{
 
 message ProductSearchESResponse{
   repeated NewProductList List = 1;
-=======
+}
 //TODO: 添加购物车
 message AddCartRequest {
   int64 UserId = 1;
@@ -418,7 +417,6 @@ message CartProductTotalPriceRequest{
 }
 message CartProductTotalPriceResponse{
   float TotalPrice = 1;
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 }
 
 service Product {
@@ -466,11 +464,9 @@ service Product {
 
   rpc UserJoinGroup(UserJoinGroupRequest) returns(UserJoinGroupResponse); // todo 用户加入拼团
 
-<<<<<<< HEAD
   rpc ProductCreateToES(ProductCreateToESRequest) returns(ProductCreateToESResponse); // todo 将商品信息写入ES
 
   rpc ProductSearchES(ProductSearchESRequest) returns(ProductSearchESResponse); // todo 查询ES中的商品信息
-=======
   //购物车模块
   rpc AddCart(AddCartRequest) returns(AddCartResponse);//todo:添加购物车
 
@@ -485,7 +481,6 @@ service Product {
   rpc CartProductCount(CartProductCountRequest) returns(CartProductCountResponse);//todo:统计购物车商品总数量
 
   rpc CartProductTotalPrice(CartProductTotalPriceRequest) returns(CartProductTotalPriceResponse);//todo:统计购物车商品总价格
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
 
 }
 

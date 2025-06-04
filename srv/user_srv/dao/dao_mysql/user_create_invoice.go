@@ -1,8 +1,6 @@
 package dao_mysql
 
 import (
-	"Data-collection/way/order"
-	"Data-collection/way/product"
 	"common/global"
 	"errors"
 	"fmt"
@@ -13,6 +11,8 @@ import (
 	"time"
 	"user_srv/pkg"
 	"user_srv/proto_user/user"
+	"way/order"
+	"way/product"
 )
 
 // TODO:生成发票号码根据数据库id

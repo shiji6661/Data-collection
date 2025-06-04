@@ -210,7 +210,6 @@ func (s ServerProduct) UserJoinGroup(ctx context.Context, in *product.UserJoinGr
 	return sale, err
 }
 
-<<<<<<< HEAD
 // todo 将商品信息写入ES
 func (s ServerProduct) ProductCreateToES(ctx context.Context, in *product.ProductCreateToESRequest) (*product.ProductCreateToESResponse, error) {
 	es, err := logic.ProductCreateToES(in)
@@ -227,7 +226,8 @@ func (s ServerProduct) ProductSearchES(ctx context.Context, in *product.ProductS
 		return nil, err
 	}
 	return es, nil
-=======
+}
+
 // todo:商品添加至购物车
 func (s ServerProduct) AddCart(ctx context.Context, in *product.AddCartRequest) (*product.AddCartResponse, error) {
 	if in.UserId == 0 || in.ProductId == 0 || in.Num == 0 {
@@ -296,5 +296,5 @@ func (s ServerProduct) CartProductTotalPrice(ctx context.Context, in *product.Ca
 		return nil, err
 	}
 	return price, nil
->>>>>>> 2ab2026dfb7ca4598fa3797350b539a74f09e08a
+
 }
