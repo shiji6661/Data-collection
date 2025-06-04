@@ -9,6 +9,7 @@ import (
 
 // todo:数据采集
 func DataCollection() (*collection.DataCollectionResponse, error) {
+	fmt.Printf("数据采集开始\n")
 	// 启动MQTT客户端
 	client, err := pkg_collection.StartMqtt()
 	if err != nil {

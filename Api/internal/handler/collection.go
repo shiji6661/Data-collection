@@ -6,7 +6,7 @@ import (
 	"context"
 )
 
-// todo: 数据接收
+// todo: 数据采集
 func DataCollection(ctx context.Context, i *collection.DataCollectionRequest) (*collection.DataCollectionResponse, error) {
 	collectionClient, err := client.CollectionClient(ctx, func(ctx context.Context, in collection.CollectionClient) (interface{}, error) {
 		register, err := in.DataCollection(ctx, i)

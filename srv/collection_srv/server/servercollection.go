@@ -10,7 +10,7 @@ type ServerCollection struct {
 	collection.UnimplementedCollectionServer
 }
 
-// todo:数据接收
+// todo:数据采集
 func (s ServerCollection) DataCollection(ctx context.Context, in *collection.DataCollectionRequest) (*collection.DataCollectionResponse, error) {
 	dataCollection, err := logic.DataCollection()
 	if err != nil {
